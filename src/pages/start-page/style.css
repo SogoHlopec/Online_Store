@@ -1,0 +1,71 @@
+.container {
+  max-width: 1920px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: absolute;
+  background-color: #d9d9d9;
+  height: 88px;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 5;
+  border-radius: 0 20px 0 20px;
+}
+
+.header-container {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.cart-total {
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 2rem;
+}
+
+.total {
+  color: #2264D1;
+}
+
+.sum {
+  color: #000000;
+}
+
+.basket {
+  max-width: 150px;
+  max-height: 40px;
+  border-radius: 4px;
+}
+
+.my-cart {
+  color: #2264D1;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2.25rem;
+  letter-spacing: 0.75%;
+}
+
+.count {
+  width: 35px;
+  height: 35px;
+  line-height: 1.5rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #fff;
+  text-align: center;
+  background: #F44336;
+}
+
+
+
