@@ -28,6 +28,9 @@
 
 .logo {
   cursor: pointer;
+  width: 150px;
+  height: 40px;
+  background-image: url('../../assets/svg/logo.svg');
 }
 
 .cart-total {
@@ -72,6 +75,44 @@
   text-align: center;
   background: #F44336;
   margin-right: 5px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  background-color: #d9d9d9;
+  height: 88px;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+}
+
+.footer-container {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.year,
+.github {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.social {
+  color: #000000;
+}
+
+.rs-logo {
+  cursor: pointer;
+  width: 120px;
+  height: 44px;
+  background-image: url('../../assets/svg/rs-logo.svg');
 }
 
 

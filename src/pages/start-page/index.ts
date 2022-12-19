@@ -1,17 +1,17 @@
 import '../../style.css';
 import './style.css';
-import Data from './modules/main';
 import Header from './modules/header';
+import Footer from './modules/footer';
 
 class StartPage {
   private body: HTMLElement;
   header;
-  main;
+  footer;
 
   constructor() {
     this.body = document.body;
     this.header = new Header();
-    this.main = new Data();
+    this.footer = new Footer();
   }
 
   run() {
@@ -21,13 +21,12 @@ class StartPage {
     this.body.prepend(container);
     console.log(this.header);
     container.prepend(this.header.header);
+    container.append(this.footer.footer);
   }
 
   renderPage() {
     this.header.run();
-    this.main.load();
-
-    //console.log(this.header);
+    this.footer.run();
   }
 }
 

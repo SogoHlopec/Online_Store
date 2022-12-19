@@ -9,18 +9,32 @@ class Header {
     this.header.className = 'header';
     const headerContainer = document.createElement('div');
     headerContainer.className = 'header-container';
+    const logo = document.createElement('div');
+    logo.className = 'logo';
+    const cartTotal = document.createElement('div');
+    cartTotal.className = 'cart-total';
+    const total = document.createElement('span');
+    total.className = 'total';
+    const sum = document.createElement('span');
+    sum.className = 'sum';
+    const basket = document.createElement('div');
+    basket.className = 'basket';
+    const myCart = document.createElement('span');
+    myCart.className = 'my-cart';
+    const count = document.createElement('div');
+    count.className = 'count';
     this.header.prepend(headerContainer);
-    headerContainer.innerHTML = `
-      <img src = '../../../assets/images/logo.png' class='logo' alt = 'logo'></div>
-      <div class = 'cart-total'>
-        <span class = 'total'> Cart total: </span>
-        <span class = 'sum'> €0.00 </span>
-      </div>
-      <div class = 'basket'>
-        <span class = 'my-cart'> My cart </span>
-        <div class = 'count'> 0 </div>
-      </div>
-    `;
+    headerContainer.prepend(logo);
+    headerContainer.append(cartTotal);
+    headerContainer.append(basket);
+    cartTotal.prepend(total);
+    total.innerText = 'Cart total: ';
+    cartTotal.append(sum);
+    sum.innerText = '€0.00';
+    basket.prepend(myCart);
+    myCart.innerText = 'My cart';
+    basket.append(count);
+    count.innerText = '0';
   }
 }
 
