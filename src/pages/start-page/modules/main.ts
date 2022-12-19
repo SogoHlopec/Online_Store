@@ -1,16 +1,15 @@
 import products from '../../../data.json';
+import { IDataProducts } from '../../../types/interfaces';
 
 class Data {
-  productList: {};
+  dataProducts: IDataProducts;
 
   constructor() {
-    this.productList = {};
-  }
-
-  load() {
-    this.productList = products;
-    console.log(this.productList);
+    this.dataProducts = products;
   }
 }
 
-export default Data;
+const dataProducts = new Data().dataProducts;
+const dataProductsList = dataProducts.products;
+
+export { dataProducts, dataProductsList };
