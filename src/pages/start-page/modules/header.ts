@@ -1,8 +1,8 @@
 class Header {
-  private header: HTMLElement;
+  header: HTMLElement;
 
   constructor() {
-    this.header = document.createElement('header');
+    this.header = document.createElement('div');
   }
 
   run() {
