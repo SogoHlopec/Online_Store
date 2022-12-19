@@ -1,16 +1,11 @@
-import products from '../../../data.json';
+class CreatElem {
+  element: HTMLElement;
 
-class Data {
-  productList: {};
-
-  constructor() {
-    this.productList = {};
+  constructor(elem: string) {
+    this.element = document.createElement(elem);
   }
 
-  load() {
-    this.productList = products;
-    console.log(this.productList);
+  setClassSelector(classSelector: string) {
+    this.element.classList.add(classSelector);
   }
 }
-
-export default Data;
