@@ -1,6 +1,6 @@
 import '../../style.css';
 import './style.css';
-import { dataProducts, dataProductsList } from './modules/main';
+import { dataProducts, dataProductsList } from '../../general/Data';
 import Header from './modules/header';
 
 class StartPage {
