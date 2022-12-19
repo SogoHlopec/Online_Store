@@ -1,10 +1,10 @@
 import products from '../../../data.json';
 
 class Data {
-  productList: [];
+  productList: {};
 
   constructor() {
-    this.productList = [];
+    this.productList = {};
   }
 
   load() {
