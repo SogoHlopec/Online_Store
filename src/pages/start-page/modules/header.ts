@@ -5,7 +5,7 @@ class Header {
     this.header = document.createElement('header');
   }
 
-  run() {
+  render() {
     this.header.className = 'header';
     const headerContainer = document.createElement('div');
     headerContainer.className = 'header-container';

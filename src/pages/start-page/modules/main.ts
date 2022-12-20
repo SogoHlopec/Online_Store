@@ -59,7 +59,7 @@ class Main {
     this.main = document.createElement('main');
   }
 
-  run() {
+  render() {
     this.main.className = 'main';
     const objAsideFilters = new CreateElem('aside', 'filters');
     this.main.append(objAsideFilters.getElement());
@@ -73,7 +73,7 @@ class Main {
 
     const objBtnCopyLink = new CreateButton('Copy Link', 'btn-copy-link');
     objBtnCopyLink.setClassSelector('button');
-    objDivButtons.prependElement(objBtnCopyLink.getElButton());
+    objDivButtons.appendElement(objBtnCopyLink.getElButton());
 
     const objDivCategory = new CreateElem('div', 'filter-category');
     objAsideFilters.appendElement(objDivCategory.getElement());
@@ -118,6 +118,7 @@ class Main {
 
     const objSortOptions = new CreateElem('select', 'sort-options');
     objSortBar.prependElement(objSortOptions.getElement());
+    objSortOptions.setClassSelector('button');
 
     const objSortTitle = new CreateElem('option', 'sort-title');
     objSortTitle.setInnerText('Sort options:');
@@ -126,7 +127,17 @@ class Main {
     objSortTitle.getElement().setAttribute('value', 'sort-title');
     objSortOptions.prependElement(objSortTitle.getElement());
 
-    const objSortPriceASC = new CreateElem('option', 'sort-price-ASC');
+    const prices: string[] = ['price-ASC', 'price-DESC', 'rating-ASC', 'rating-DESC', 'disount-ASC', 'discount-DESC'];
+
+    for (let i = 0; i < prices.length; i++) {
+      const objSort = new CreateElem('option', `sort-${prices[i]}`);
+      objSort.setInnerText(`Sort by ${prices[i]}`);
+      objSort.setClassSelector('sort');
+      objSort.getElement().setAttribute('value', `${prices[i]}`);
+      objSortOptions.appendElement(objSort.getElement());
+    }
+
+    /*const objSortPriceASC = new CreateElem('option', 'sort-price-ASC');
     objSortPriceASC.setInnerText('Sort by price ASC');
     objSortPriceASC.setClassSelector('sort');
     objSortPriceASC.getElement().setAttribute('value', 'price-ASC');
@@ -148,7 +159,7 @@ class Main {
     objSortRatingDESC.setInnerText('Sort by rating DESC');
     objSortRatingDESC.setClassSelector('sort');
     objSortRatingDESC.getElement().setAttribute('value', 'rating-DESC');
-    objSortOptions.appendElement(objSortRatingDESC.getElement());
+    objSortOptions.appendElement(objSortRatingDESC.getElement());*/
   }
 }
 

@@ -8,7 +8,6 @@
 
 /* Header */
 .header {
-  position: absolute;
   background-color: #d9d9d9;
   height: 88px;
   margin: 0 auto;
@@ -55,17 +54,22 @@
   display: flex;
   align-items: center;
   filter: drop-shadow(0px 3px rgba(27, 78, 163, 0.2));
+  color: #2264D1;
+  font-weight: 700;
+  outline: none;
+  border: none;
+  text-align: center;
 }
 
 .basket {
-  max-width: 150px;
-  max-height: 40px;
+  width: 150px;
+  height: 40px;
 }
 
 .my-cart {
   color: #2264D1;
   font-size: 1.5rem;
-  font-weight: 700;
+  
   padding: 7px 8px 7px 8px;
 }
 
@@ -122,15 +126,16 @@
 
 /*Main*/
 .main {
-  width: 95%;
+  width: 95.8%;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  margin: 0 auto;
 }
 
 .filters {
   width: 16.4%;
-  height: 60%;
+  /*height: 60%;*/
   background-color: #ececec;
   border-radius: 4px;
   display: flex;
@@ -201,6 +206,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  align-items: center;
 }
 
 
