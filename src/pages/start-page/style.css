@@ -130,6 +130,7 @@
 
 .filters {
   width: 16.4%;
+  height: 60%;
   background-color: #ececec;
   border-radius: 4px;
   display: flex;
@@ -159,6 +160,22 @@
   width: 90%;
   background-color: #D9D9D9;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.filter-category {
+  height: 35%;
+}
+.filter-price {
+  height: 35%;
+}
+.filter-brand {
+  height: 15%;
+}
+.filter-stock {
+  height: 15%;
 }
 
 .title-filter {
@@ -166,6 +183,7 @@
   background-color: #BAB7B7;
   color: #000000;
   text-align: center;
+  border-radius: 4px;
 }
 
 .catalog {
