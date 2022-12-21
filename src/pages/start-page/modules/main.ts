@@ -1,57 +1,6 @@
 import { dataProducts, dataProductsList } from '../../../general/Data';
-class CreateElem {
-  element: HTMLElement;
-  selector: string;
-
-  constructor(elem: string, selector: string) {
-    this.element = document.createElement(elem);
-    this.selector = selector;
-  }
-
-  setClassSelector(classSelector: string) {
-    this.element.classList.add(classSelector);
-  }
-
-  setInnerText(text: string) {
-    this.element.innerText = text;
-  }
-
-  getElement() {
-    this.element.classList.add(this.selector);
-    return this.element;
-  }
-
-  prependElement(element: HTMLElement) {
-    this.element.prepend(element);
-  }
-
-  appendElement(element: HTMLElement) {
-    this.element.append(element);
-  }
-}
-
-class CreateButton {
-  button: HTMLElement;
-  text: string;
-  selector: string;
-
-  constructor(text: string, selector: string) {
-    this.button = document.createElement('button');
-    this.text = text;
-    this.selector = selector;
-  }
-
-  setClassSelector(classSelector: string) {
-    this.button.classList.add(classSelector);
-  }
-
-  getElButton() {
-    this.button.classList.add(this.selector);
-    this.button.innerText = this.text;
-    return this.button;
-  }
-}
-
+import { CreateElem } from '../../../general/CreateElem';
+import { CreateButton } from '../../../general/CreateButton';
 class Main {
   main: HTMLElement;
 
