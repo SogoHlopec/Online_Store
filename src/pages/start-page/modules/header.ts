@@ -5,7 +5,7 @@ class Header {
     this.header = document.createElement('header');
   }
 
-  run() {
+  render() {
     this.header.className = 'header';
     const headerContainer = document.createElement('div');
     headerContainer.className = 'header-container';
@@ -18,7 +18,7 @@ class Header {
     const sum = document.createElement('span');
     sum.className = 'sum';
     const basket = document.createElement('div');
-    basket.className = 'basket';
+    basket.className = 'basket button';
     const myCart = document.createElement('span');
     myCart.className = 'my-cart';
     const count = document.createElement('div');

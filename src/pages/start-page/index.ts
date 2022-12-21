@@ -30,9 +30,9 @@ class StartPage {
   }
 
   renderPage() {
-    this.header.run();
-    this.footer.run();
-    this.main.run();
+    this.header.render();
+    this.footer.render();
+    this.main.render();
   }
 }
 

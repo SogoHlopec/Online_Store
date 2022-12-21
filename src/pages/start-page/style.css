@@ -6,8 +6,8 @@
   flex-direction: column;
 }
 
+/* Header */
 .header {
-  position: absolute;
   background-color: #d9d9d9;
   height: 88px;
   margin: 0 auto;
@@ -15,6 +15,7 @@
   z-index: 5;
   border-radius: 0 0 20px 20px;
   display: flex;
+  margin-bottom: 33px;
 }
 
 .header-container {
@@ -47,21 +48,28 @@
   color: #000000;
 }
 
-.basket {
-  max-width: 150px;
-  max-height: 40px;
+.button {
   border-radius: 4px;
   background-color: #FFFFFF;
   display: flex;
   align-items: center;
-  border-radius: 4px;
   filter: drop-shadow(0px 3px rgba(27, 78, 163, 0.2));
+  color: #2264D1;
+  font-weight: 700;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+
+.basket {
+  width: 150px;
+  height: 40px;
 }
 
 .my-cart {
   color: #2264D1;
   font-size: 1.5rem;
-  font-weight: 700;
+  
   padding: 7px 8px 7px 8px;
 }
 
@@ -77,6 +85,7 @@
   margin-right: 5px;
 }
 
+/*Footer */
 .footer {
   position: absolute;
   bottom: 0;
@@ -114,6 +123,93 @@
   height: 44px;
   background-image: url('../../assets/svg/rs-logo.svg');
 }
+
+/*Main*/
+.main {
+  width: 95.8%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.filters {
+  width: 16.4%;
+  /*height: 60%;*/
+  background-color: #ececec;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+.buttons {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.btn-copy-link,
+.btn-reset {
+  max-width: 120px;
+  max-height: 25px;
+}
+
+.filter-category,
+.filter-price,
+.filter-brand,
+.filter-stock {
+  width: 90%;
+  background-color: #D9D9D9;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.filter-category {
+  height: 35%;
+}
+.filter-price {
+  height: 35%;
+}
+.filter-brand {
+  height: 15%;
+}
+.filter-stock {
+  height: 15%;
+}
+
+.title-filter {
+  width: 100%;
+  background-color: #BAB7B7;
+  color: #000000;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.catalog {
+  width: 82.7%;
+  background-color: #D9D9D9;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.catalog-navigation {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+
 
 
 

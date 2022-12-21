@@ -5,7 +5,7 @@ class Footer {
     this.footer = document.createElement('footer');
   }
 
-  run() {
+  render() {
     this.footer.className = 'footer';
     const footerContainer = document.createElement('div');
     footerContainer.className = 'footer-container';
