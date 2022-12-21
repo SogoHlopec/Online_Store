@@ -1,22 +1,18 @@
-class CreateButton {
-  button: HTMLElement;
+import { CreateElem } from './CreateElem';
+class CreateButton extends CreateElem {
   text: string;
-  selector: string;
 
-  constructor(text: string, selector: string) {
-    this.button = document.createElement('button');
-    this.text = text;
+  constructor(text: string, selector: string, elem = 'button') {
+    super(elem, selector);
+    this.element = document.createElement(elem);
     this.selector = selector;
+    this.text = text;
   }
 
-  setClassSelector(classSelector: string) {
-    this.button.classList.add(classSelector);
-  }
-
-  getElButton() {
-    this.button.classList.add(this.selector);
-    this.button.innerText = this.text;
-    return this.button;
+  getElement() {
+    this.element.classList.add(this.selector);
+    this.element.innerText = this.text;
+    return this.element;
   }
 }
 export { CreateButton };
