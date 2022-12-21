@@ -1,56 +1,9 @@
 import { dataProducts, dataProductsList } from '../../../general/Data';
-class CreateElem {
-  element: HTMLElement;
-  selector: string;
+import { CreateElem } from '../../../general/CreateElem';
+import { CreateButton } from '../../../general/CreateButton';
+import { CreateCard } from './createCard';
 
-  constructor(elem: string, selector: string) {
-    this.element = document.createElement(elem);
-    this.selector = selector;
-  }
-
-  setClassSelector(classSelector: string) {
-    this.element.classList.add(classSelector);
-  }
-
-  setInnerText(text: string) {
-    this.element.innerText = text;
-  }
-
-  getElement() {
-    this.element.classList.add(this.selector);
-    return this.element;
-  }
-
-  prependElement(element: HTMLElement) {
-    this.element.prepend(element);
-  }
-
-  appendElement(element: HTMLElement) {
-    this.element.append(element);
-  }
-}
-
-class CreateButton {
-  button: HTMLElement;
-  text: string;
-  selector: string;
-
-  constructor(text: string, selector: string) {
-    this.button = document.createElement('button');
-    this.text = text;
-    this.selector = selector;
-  }
-
-  setClassSelector(classSelector: string) {
-    this.button.classList.add(classSelector);
-  }
-
-  getElButton() {
-    this.button.classList.add(this.selector);
-    this.button.innerText = this.text;
-    return this.button;
-  }
-}
+const totalProducts = dataProducts.total;
 
 class Main {
   main: HTMLElement;
@@ -69,11 +22,11 @@ class Main {
 
     const objBtnReset = new CreateButton('Reset Filters', 'btn-reset');
     objBtnReset.setClassSelector('button');
-    objDivButtons.prependElement(objBtnReset.getElButton());
+    objDivButtons.prependElement(objBtnReset.getElement());
 
     const objBtnCopyLink = new CreateButton('Copy Link', 'btn-copy-link');
     objBtnCopyLink.setClassSelector('button');
-    objDivButtons.appendElement(objBtnCopyLink.getElButton());
+    objDivButtons.appendElement(objBtnCopyLink.getElement());
 
     const objDivCategory = new CreateElem('div', 'filter-category');
     objAsideFilters.appendElement(objDivCategory.getElement());
@@ -127,7 +80,7 @@ class Main {
     objSortTitle.getElement().setAttribute('value', 'sort-title');
     objSortOptions.prependElement(objSortTitle.getElement());
 
-    const prices: string[] = ['price-ASC', 'price-DESC', 'rating-ASC', 'rating-DESC', 'disount-ASC', 'discount-DESC'];
+    const prices: string[] = ['price-ASC', 'price-DESC', 'rating-ASC', 'rating-DESC', 'discount-ASC', 'discount-DESC'];
 
     for (let i = 0; i < prices.length; i++) {
       const objSort = new CreateElem('option', `sort-${prices[i]}`);
@@ -137,29 +90,24 @@ class Main {
       objSortOptions.appendElement(objSort.getElement());
     }
 
-    /*const objSortPriceASC = new CreateElem('option', 'sort-price-ASC');
-    objSortPriceASC.setInnerText('Sort by price ASC');
-    objSortPriceASC.setClassSelector('sort');
-    objSortPriceASC.getElement().setAttribute('value', 'price-ASC');
-    objSortOptions.appendElement(objSortPriceASC.getElement());
+    const objFound = new CreateElem('h2', 'title');
+    objFound.setClassSelector('title-found');
+    objFound.setInnerText(`Found: ${totalProducts}`);
+    objDivNavigation.appendElement(objFound.getElement());
 
-    const objSortPriceDESC = new CreateElem('option', 'sort-price-DESC');
-    objSortPriceDESC.setInnerText('Sort by price DESC');
-    objSortPriceDESC.setClassSelector('sort');
-    objSortPriceDESC.getElement().setAttribute('value', 'price-DESC');
-    objSortOptions.appendElement(objSortPriceDESC.getElement());
+    const objSearch = new CreateElem('input', 'search');
+    objSearch.getElement().setAttribute('type', 'search');
+    objSearch.getElement().setAttribute('placeholder', 'Search product');
+    objDivNavigation.appendElement(objSearch.getElement());
 
-    const objSortRatingASC = new CreateElem('option', 'sort-rating-ASC');
-    objSortRatingASC.setInnerText('Sort by rating ASC');
-    objSortRatingASC.setClassSelector('sort');
-    objSortRatingASC.getElement().setAttribute('value', 'rating-ASC');
-    objSortOptions.appendElement(objSortRatingASC.getElement());
+    const objCardsWrapper = new CreateElem('div', 'cards-wrapper');
+    objSectionCatalog.appendElement(objCardsWrapper.getElement());
 
-    const objSortRatingDESC = new CreateElem('option', 'sort-rating-DESC');
-    objSortRatingDESC.setInnerText('Sort by rating DESC');
-    objSortRatingDESC.setClassSelector('sort');
-    objSortRatingDESC.getElement().setAttribute('value', 'rating-DESC');
-    objSortOptions.appendElement(objSortRatingDESC.getElement());*/
+    for (let i = 0; i < dataProductsList.length; i++) {
+      const objCard = new CreateCard(dataProductsList[i]);
+      objCard.render();
+      objCardsWrapper.appendElement(objCard.cardContainer);
+    }
   }
 }
 
