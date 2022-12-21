@@ -1,5 +1,3 @@
-import { CreateElem } from '../../general/CreateElem';
-
 class Create404Page {
   page404: HTMLElement;
 
