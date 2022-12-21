@@ -1,5 +1,5 @@
 // ! interface for data
-interface IProductsList {
+export interface IProduct {
   brand: string;
   category: string;
   description: string;
@@ -17,5 +17,5 @@ export interface IDataProducts {
   limit: number;
   skip: number;
   total: number;
-  products: IProductsList[];
+  products: IProduct[];
 }
