@@ -92,16 +92,22 @@ class Main {
 
     const objFound = new CreateElem('h2', 'title');
     objFound.setClassSelector('title-found');
-    objFound.setInnerText(`Found: ${totalProducts}`);
+    objFound.setInnerText(`Found: `);
     objDivNavigation.appendElement(objFound.getElement());
+    const objFoundCount = new CreateElem('span', 'found-count');
+    objFoundCount.setInnerText(`${totalProducts}`);
+    objFound.appendElement(objFoundCount.getElement());
 
     const objSearch = new CreateElem('input', 'search');
     objSearch.getElement().setAttribute('type', 'search');
     objSearch.getElement().setAttribute('placeholder', 'Search product');
     objDivNavigation.appendElement(objSearch.getElement());
 
+    const objCardsContainer = new CreateElem('div', 'cards-container');
+    objSectionCatalog.appendElement(objCardsContainer.getElement());
+
     const objCardsWrapper = new CreateElem('div', 'cards-wrapper');
-    objSectionCatalog.appendElement(objCardsWrapper.getElement());
+    objCardsContainer.appendElement(objCardsWrapper.getElement());
 
     for (let i = 0; i < dataProductsList.length; i++) {
       const objCard = new CreateCard(dataProductsList[i]);
