@@ -102,6 +102,12 @@ class Main {
 
     const objCardsWrapper = new CreateElem('div', 'cards-wrapper');
     objSectionCatalog.appendElement(objCardsWrapper.getElement());
+
+    for (let i = 0; i < dataProductsList.length; i++) {
+      const objCard = new CreateCard(dataProductsList[i]);
+      objCard.render();
+      objCardsWrapper.appendElement(objCard.cardContainer);
+    }
   }
 }
 

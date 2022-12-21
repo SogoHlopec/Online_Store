@@ -15,7 +15,7 @@ class CreateCard {
   render() {
     this.cardContainer.className = 'card-container';
     const objCardTitle = new CreateElem('h3', 'card-title');
-    objCardTitle.setInnerText(`${this.product.title}`);
+    objCardTitle.setInnerText(`${this.product.title.toUpperCase()}`);
     this.cardContainer.prepend(objCardTitle.getElement());
 
     const objCardImg = new CreateElem('img', 'card-img');
