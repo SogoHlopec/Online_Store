@@ -5,3 +5,4 @@ const startPage = new StartPage();
 const page404 = new Create404Page();
 startPage.run();
 startPage.renderPage();
+page404.render();
