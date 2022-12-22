@@ -2,6 +2,7 @@ import { dataProducts, dataProductsList } from '../../../general/Data';
 import { CreateElem } from '../../../general/CreateElem';
 import { CreateButton } from '../../../general/CreateButton';
 import { CreateCard } from './createCard';
+import { IProduct } from '../../../types/interfaces';
 
 const totalProducts = dataProducts.total;
 
@@ -35,6 +36,67 @@ class Main {
     objTitleCategory.setClassSelector('title-filter');
     objTitleCategory.setInnerText('Category');
     objDivCategory.prependElement(objTitleCategory.getElement());
+
+    const objFilterWrapper = new CreateElem('div', 'filter-wrapper');
+    objDivCategory.appendElement(objFilterWrapper.getElement());
+
+    const categories: string[] = [];
+    dataProductsList.forEach((item: IProduct): void => {
+      if (!categories.includes(item.category)) {
+        categories.push(item.category);
+      }
+    });
+
+    for (let i = 0; i < categories.length; i++) {
+      const objFilterItem = new CreateElem('div', 'filter-item');
+      objFilterWrapper.appendElement(objFilterItem.getElement());
+
+      const objFilterInput = new CreateElem('input', 'filter-input');
+      objFilterItem.appendElement(objFilterInput.getElement());
+      objFilterInput.getElement().setAttribute('type', 'checkbox');
+      objFilterInput.getElement().setAttribute('id', `${categories[i]}`);
+
+      const objFilterLabel = new CreateElem('label', 'filter-label');
+      objFilterItem.appendElement(objFilterLabel.getElement());
+      objFilterLabel.setInnerText(`${categories[i]}`);
+
+      const objFilterCount = new CreateElem('span', 'filter-count');
+      objFilterItem.appendElement(objFilterCount.getElement());
+      objFilterCount.setInnerText('5/5');
+    }
+
+    const brands: string[] = [];
+    const brandsTemp: string[] = [];
+    dataProductsList.forEach((item: IProduct): void => {
+      if (!brandsTemp.includes(item.brand.toLowerCase())) {
+        brandsTemp.push(item.brand.toLowerCase());
+        brands.push(item.brand);
+      }
+    });
+
+    console.log(brands);
+
+    for (let i = 0; i < brands.length; i++) {
+      const objFilterItem = new CreateElem('div', 'filter-item');
+      objFilterWrapper.appendElement(objFilterItem.getElement());
+
+      const objFilterInput = new CreateElem('input', 'filter-input');
+      objFilterItem.appendElement(objFilterInput.getElement());
+      objFilterInput.getElement().setAttribute('type', 'checkbox');
+      objFilterInput.getElement().setAttribute('id', `${brands[i]}`);
+
+      const objFilterLabel = new CreateElem('label', 'filter-label');
+      objFilterItem.appendElement(objFilterLabel.getElement());
+      objFilterLabel.setInnerText(`${brands[i]}`);
+
+      const objFilterCount = new CreateElem('span', 'filter-count');
+      objFilterItem.appendElement(objFilterCount.getElement());
+      objFilterCount.setInnerText('5/5');
+    }
+
+    /*const brandsList = dataProductsList.filter((item: IProduct): string[] => {
+      item.
+    } )*/
 
     const objDivBrand = new CreateElem('div', 'filter-brand');
     objAsideFilters.appendElement(objDivBrand.getElement());
