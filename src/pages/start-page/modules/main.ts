@@ -98,10 +98,21 @@ class Main {
     objFoundCount.setInnerText(`${totalProducts}`);
     objFound.appendElement(objFoundCount.getElement());
 
+    const objSearchBtnContainer = new CreateElem('div', 'search-btn-container');
+    objDivNavigation.appendElement(objSearchBtnContainer.getElement());
+
     const objSearch = new CreateElem('input', 'search');
     objSearch.getElement().setAttribute('type', 'search');
     objSearch.getElement().setAttribute('placeholder', 'Search product');
-    objDivNavigation.appendElement(objSearch.getElement());
+    objSearchBtnContainer.appendElement(objSearch.getElement());
+
+    const objBtnList = new CreateButton('List', 'btn-list');
+    objBtnList.setClassSelector('button');
+    objSearchBtnContainer.appendElement(objBtnList.getElement());
+
+    const objBtnCards = new CreateButton('Cards', 'btn-cards');
+    objBtnCards.setClassSelector('button');
+    objSearchBtnContainer.appendElement(objBtnCards.getElement());
 
     const objCardsContainer = new CreateElem('div', 'cards-container');
     objSectionCatalog.appendElement(objCardsContainer.getElement());
