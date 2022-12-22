@@ -41,7 +41,7 @@
 }
 
 .total {
-  color: #2264D1;
+  color: #2264d1;
 }
 
 .sum {
@@ -50,12 +50,12 @@
 
 .button {
   border-radius: 4px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   filter: drop-shadow(0px 3px 4px rgba(27, 78, 163, 0.2));
-  color: #2264D1;
+  color: #2264d1;
   font-weight: 700;
   outline: none;
   border: none;
@@ -68,9 +68,9 @@
 }
 
 .my-cart {
-  color: #2264D1;
+  color: #2264d1;
   font-size: 1.5rem;
-  
+
   padding: 7px 8px 7px 8px;
 }
 
@@ -82,7 +82,7 @@
   font-size: 1.5rem;
   color: #fff;
   text-align: center;
-  background: #F44336;
+  background: #f44336;
   margin-right: 5px;
 }
 
@@ -164,7 +164,7 @@
 .filter-brand,
 .filter-stock {
   width: 90%;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -189,7 +189,7 @@
 
 .title-filter {
   width: 100%;
-  background-color: #BAB7B7;
+  background-color: #bab7b7;
   color: #000000;
   text-align: center;
   border-radius: 4px;
@@ -197,7 +197,7 @@
 
 .catalog {
   width: 82.7%;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -219,18 +219,28 @@
   height: 25px;
 }
 
+.sort-options {
+  height: 100%;
+}
+
 .title-found {
   font-weight: 700;
   font-size: 1.25rem;
-  color: #2264D1;
+  color: #2264d1;
 }
 
 .found-count {
   color: #000000;
 }
 
+.search-btn-container {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+}
+
 .search {
-  width: 400px;
+  width: 60%;
   height: 25px;
   text-align: center;
   outline: none;
@@ -238,10 +248,18 @@
   border-style: none;
 }
 
+.btn-list {
+  width: 15%;
+}
+
+.btn-cards {
+  width: 15%;
+}
+
 .cards-container {
   width: 100%;
   margin: 0 auto;
-  background-color: #ECECEC;
+  background-color: #ececec;
   border-radius: 4px;
 }
 
@@ -252,7 +270,7 @@
   grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
   grid-gap: 1em;
   margin: 0 auto;
-  background-color: #ECECEC;
+  background-color: #ececec;
   margin-bottom: 1rem;
 }
 
@@ -260,18 +278,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 4px;
   overflow: hidden;
 }
 
 .card-title {
-  color: #2264D1;
+  color: #2264d1;
   font-size: 1.1rem;
   padding: 12px 0 5px 0;
   font-weight: 700;
   text-align: center;
-  white-space: nowrap;
+  width: 95%;
+  height: 40px;
 }
 
 .card-img {
@@ -307,7 +326,3 @@
   height: 25px;
   padding-top: 0.2rem;
 }
-
-
-
-
