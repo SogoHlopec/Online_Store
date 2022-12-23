@@ -59,8 +59,9 @@ class Main {
       objFilterInput.getElement().setAttribute('id', `${categories[i]}`);
 
       const objFilterLabel = new CreateElem('label', 'filter-label');
-      objFilterItem.appendElement(objFilterLabel.getElement());
       objFilterLabel.setInnerText(`${categories[i]}`);
+      objFilterLabel.getElement().setAttribute('for', `${categories[i]}`);
+      objFilterItem.appendElement(objFilterLabel.getElement());
 
       const objFilterCount = new CreateElem('span', 'filter-count');
       objFilterItem.appendElement(objFilterCount.getElement());
@@ -112,8 +113,9 @@ class Main {
       objFilterInput.getElement().setAttribute('id', `${brands[i].brand}`);
 
       const objFilterLabel = new CreateElem('label', 'filter-label');
-      objFilterItem.appendElement(objFilterLabel.getElement());
       objFilterLabel.setInnerText(`${brands[i].brand}`);
+      objFilterLabel.getElement().setAttribute('for', `${brands[i].brand}`);
+      objFilterItem.appendElement(objFilterLabel.getElement());
 
       const objFilterCount = new CreateElem('span', 'filter-count');
       objFilterItem.appendElement(objFilterCount.getElement());

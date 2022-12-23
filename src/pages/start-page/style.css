@@ -208,6 +208,11 @@
   align-items: center;
 }
 
+.filter-input,
+.filter-label:hover {
+  cursor: pointer;
+}
+
 .filter-count {
   margin-left: auto;
 }
