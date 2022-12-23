@@ -1,4 +1,4 @@
-import { dataProducts, dataProductsList } from '../../../general/Data';
+// import { dataProducts, dataProductsList } from '../../../general/Data';
 import { CreateButton } from '../../../general/CreateButton';
 import { CreateElem } from '../../../general/CreateElem';
 import { IProduct } from '../../../types/interfaces';
