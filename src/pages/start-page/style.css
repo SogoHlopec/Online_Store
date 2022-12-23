@@ -357,3 +357,7 @@
   height: 25px;
   padding-top: 0.2rem;
 }
+
+.btn-add-active {
+  color: red;
+}

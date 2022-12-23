@@ -5,6 +5,7 @@ import { CreateCard } from './createCard';
 import { IProduct } from '../../../types/interfaces';
 
 const totalProducts = dataProducts.total;
+const currentCards: IProduct[] = [];
 
 class Main {
   main: HTMLElement;
@@ -41,7 +42,7 @@ class Main {
     objFilterCatWrapper.setClassSelector('filter-wrapper');
     objDivCategory.appendElement(objFilterCatWrapper.getElement());
 
-    // !Create filters categories start
+    //! Create filters categories start !
     const categories: string[] = [];
     dataProductsList.forEach((item: IProduct): void => {
       if (!categories.includes(item.category)) {
@@ -68,7 +69,7 @@ class Main {
       objFilterCount.setInnerText('5/5');
     }
 
-    //!create filters brands
+    //! create filters brands !
     const objDivBrand = new CreateElem('div', 'filter-brand');
     objAsideFilters.appendElement(objDivBrand.getElement());
 
@@ -81,7 +82,7 @@ class Main {
     objFilterBrandWrapper.setClassSelector('filter-wrapper');
     objDivBrand.appendElement(objFilterBrandWrapper.getElement());
 
-    // ! set brands { nameBrand: count}
+    //! set brands { nameBrand: count} !
     const brands: { brand: string; count: number }[] = [];
     const arrBrands: string[] = [];
     const arrBrandsTemp: string[] = [];
@@ -137,7 +138,7 @@ class Main {
     objTitleStock.setClassSelector('title-filter');
     objTitleStock.setInnerText('Stock');
     objDivStock.prependElement(objTitleStock.getElement());
-    // !Create categories filters stop
+    // ! Create categories filters stop!
 
     const objSectionCatalog = new CreateElem('section', 'catalog');
     this.main.append(objSectionCatalog.getElement());
@@ -199,12 +200,14 @@ class Main {
     const objCardsWrapper = new CreateElem('div', 'cards-wrapper');
     objCardsContainer.appendElement(objCardsWrapper.getElement());
 
+    // ! create Cards !
     for (let i = 0; i < dataProductsList.length; i++) {
       const objCard = new CreateCard(dataProductsList[i]);
+      currentCards.push(objCard.product);
       objCard.render();
       objCardsWrapper.appendElement(objCard.cardContainer);
     }
   }
 }
 
-export { CreateElem, Main };
+export { Main, currentCards };

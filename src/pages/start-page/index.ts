@@ -1,7 +1,7 @@
 import '../../style.css';
 import './style.css';
 import { dataProducts, dataProductsList } from '../../general/Data';
-import Header from './modules/header';
+import { Header } from './modules/header';
 import Footer from './modules/footer';
 import { Main } from './modules/main';
 
@@ -25,8 +25,6 @@ class StartPage {
     container.prepend(this.header.header);
     container.append(this.main.main);
     container.append(this.footer.footer);
-    console.log(dataProducts);
-    console.log(dataProductsList);
   }
 
   renderPage() {
@@ -36,4 +34,4 @@ class StartPage {
   }
 }
 
-export default StartPage;
+export { StartPage };

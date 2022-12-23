@@ -63,10 +63,12 @@ class CreateCard {
 
     const objBtnAdd = new CreateButton('Add to Cart', 'btn-add');
     objBtnAdd.setClassSelector('button');
+    objBtnAdd.getElement().setAttribute('id', `${this.product.id}`);
     objCardBtnContainer.prependElement(objBtnAdd.getElement());
 
     const objBtnDetails = new CreateButton('Details', 'btn-details');
     objBtnDetails.setClassSelector('button');
+    objBtnDetails.getElement().setAttribute('id', `${this.product.id}`);
     objCardBtnContainer.appendElement(objBtnDetails.getElement());
   }
 }

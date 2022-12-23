@@ -1,3 +1,5 @@
+import { Cart } from './Cart';
+const cart = new Cart();
 class Header {
   header: HTMLElement;
 
@@ -21,8 +23,6 @@ class Header {
     basket.className = 'basket button';
     const myCart = document.createElement('span');
     myCart.className = 'my-cart';
-    const count = document.createElement('div');
-    count.className = 'count';
     this.header.prepend(headerContainer);
     headerContainer.prepend(logo);
     headerContainer.append(cartTotal);
@@ -33,9 +33,9 @@ class Header {
     sum.innerText = '€0.00';
     basket.prepend(myCart);
     myCart.innerText = 'My cart';
-    basket.append(count);
-    count.innerText = '0';
+    basket.append(cart.getElement());
+    cart.renderCounter();
   }
 }
 
-export default Header;
+export { Header, cart };
