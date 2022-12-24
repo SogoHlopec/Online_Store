@@ -4,31 +4,48 @@ import { dataProductsList } from '../../../general/Data';
 
 class Cart {
   elProdCounter: HTMLElement;
-  protected count: number;
+  elSumPrice: HTMLElement;
   currentCartProducts: IProduct[];
+  protected count: number;
+  protected sumPrice: number;
 
   constructor() {
     this.elProdCounter = new CreateElem('div', 'count').getElement();
+    this.elSumPrice = new CreateElem('span', 'sum').getElement();
     this.currentCartProducts = [];
     this.count = this.currentCartProducts.length;
+    this.sumPrice = 0;
   }
 
   getCounter() {
     return this.count;
   }
 
-  getElement() {
+  getElProdCounter() {
     return this.elProdCounter;
   }
 
-  renderCounter() {
+  getElSumPrice() {
+    return this.elSumPrice;
+  }
+
+  renderCounterAndPrice() {
     this.elProdCounter.innerText = `${this.getCounter()}`;
+    this.elSumPrice.innerText = `${this.sumPrice.toFixed(2)}`;
+    console.log(this.sumPrice);
+  }
+
+  updateSumPrice() {
+    this.sumPrice = this.currentCartProducts
+      .map((item: IProduct): number => item.price)
+      .reduce((sum: number, price: number): number => sum + price);
   }
 
   addProduct(id: number) {
     this.currentCartProducts.push(dataProductsList[id - 1]);
     this.count = this.currentCartProducts.length;
-    this.renderCounter();
+    this.updateSumPrice();
+    this.renderCounterAndPrice();
   }
 
   deleteProduct(id: number) {
@@ -40,7 +57,8 @@ class Cart {
       }
     }
     this.count = this.currentCartProducts.length;
-    this.renderCounter();
+    this.updateSumPrice();
+    this.renderCounterAndPrice();
   }
 
   eventClick(target: Element) {
@@ -49,7 +67,6 @@ class Cart {
         this.deleteProduct(Number(target.getAttribute('id')));
       } else {
         this.addProduct(Number(target.getAttribute('id')));
-        console.log(Number(target.getAttribute('id')));
       }
       target.classList.toggle('btn-add-active');
       if (target.textContent === 'Add to Cart') {

@@ -1,6 +1,6 @@
 import '../../style.css';
 import './style.css';
-import { dataProducts, dataProductsList } from '../../general/Data';
+// import { dataProducts, dataProductsList } from '../../general/Data';
 import { Header } from './modules/header';
 import Footer from './modules/footer';
 import { Main } from './modules/main';

@@ -12,7 +12,7 @@ startPage.renderPage();
 // ! Events !
 // ! add/delete product in Cart start!
 document.addEventListener('click', (e) => {
-  const target = e.target as Element;
+  const target = e.target as Element; // TODO check for null
   cart.eventClick(target);
   console.log(cart);
 });

@@ -29,12 +29,11 @@ class Header {
     headerContainer.append(basket);
     cartTotal.prepend(total);
     total.innerText = 'Cart total: ';
-    cartTotal.append(sum);
-    sum.innerText = '€0.00';
+    cartTotal.append(cart.getElSumPrice());
     basket.prepend(myCart);
     myCart.innerText = 'My cart';
-    basket.append(cart.getElement());
-    cart.renderCounter();
+    basket.append(cart.getElProdCounter());
+    cart.renderCounterAndPrice();
   }
 }
 
