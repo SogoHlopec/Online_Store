@@ -1,7 +1,6 @@
 import { CreateElem } from '../../../general/CreateElem';
 import { IProduct } from '../../../types/interfaces';
 import { dataProductsList } from '../../../general/Data';
-import { currentCards } from './main';
 
 class Cart {
   elProdCounter: HTMLElement;
@@ -33,7 +32,6 @@ class Cart {
   renderCounterAndPrice() {
     this.elProdCounter.innerText = `${this.getCounter()}`;
     this.elSumPrice.innerText = `${this.sumPrice.toFixed(2)}`;
-    console.log(this.sumPrice);
   }
 
   updateSumPrice() {

@@ -203,9 +203,14 @@
   padding: 2%;
 }
 
-.filter-item {
+.filter-item,
+.filter-item-not-active {
   display: flex;
   align-items: center;
+}
+
+.filter-item-not-active {
+  color: rgb(0, 0, 0, 0.5);
 }
 
 .filter-input,

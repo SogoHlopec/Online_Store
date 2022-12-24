@@ -4,6 +4,8 @@ import './style.css';
 import { Header } from './modules/header';
 import Footer from './modules/footer';
 import { Main } from './modules/main';
+import { cart } from './modules/header';
+import { objfilters } from './modules/Filters';
 
 class StartPage {
   private body: HTMLElement;
@@ -31,6 +33,20 @@ class StartPage {
     this.header.render();
     this.footer.render();
     this.main.render();
+
+    // ! Events !
+    // ! add/delete product in Cart start!
+    document.addEventListener('click', (e) => {
+      const target = e.target as Element; // TODO check for null
+      cart.eventClick(target);
+    });
+    // ! add product in Cart stop!
+    //! add style for not active filters start!
+    const wrap = document.querySelector('.filter-cat-wrapper') as HTMLElement | null;
+    if (wrap !== null) {
+      objfilters.eventChange(wrap);
+    }
+    //! add style for not active filters stop!
   }
 }
 

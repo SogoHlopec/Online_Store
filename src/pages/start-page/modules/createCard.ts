@@ -71,6 +71,10 @@ class CreateCard {
     objBtnDetails.getElement().setAttribute('id', `${this.product.id}`);
     objCardBtnContainer.appendElement(objBtnDetails.getElement());
   }
+
+  delete() {
+    this.cardContainer.remove();
+  }
 }
 
 export { CreateCard };
