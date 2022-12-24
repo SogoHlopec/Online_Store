@@ -1,6 +1,7 @@
 import { CreateElem } from '../../../general/CreateElem';
 import { IProduct } from '../../../types/interfaces';
 import { dataProductsList } from '../../../general/Data';
+import { currentCards } from './main';
 
 class Cart {
   elProdCounter: HTMLElement;
@@ -36,9 +37,13 @@ class Cart {
   }
 
   updateSumPrice() {
-    this.sumPrice = this.currentCartProducts
-      .map((item: IProduct): number => item.price)
-      .reduce((sum: number, price: number): number => sum + price);
+    if (!this.currentCartProducts.length) {
+      this.sumPrice = 0;
+    } else {
+      this.sumPrice = this.currentCartProducts
+        .map((item: IProduct): number => item.price)
+        .reduce((sum: number, price: number): number => sum + price);
+    }
   }
 
   addProduct(id: number) {
