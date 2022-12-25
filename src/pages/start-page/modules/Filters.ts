@@ -19,8 +19,7 @@ class Filters {
     if (container !== null && container !== undefined) {
       const arrItemFilter = container.querySelectorAll('.filter-item');
       container.addEventListener('change', () => {
-        this.renderCount(this.catWrapper);
-        this.renderCount(this.brandsWrapper);
+        this.renderCount();
 
         for (let i = 0; i < arrItemFilter.length; i++) {
           const checkbox = arrItemFilter[i].querySelector('.filter-input') as HTMLInputElement | null;
@@ -44,9 +43,9 @@ class Filters {
     }
   }
 
-  renderCount(wrap: HTMLElement | null) {
-    if (wrap) {
-      const arrItemFilter = wrap.querySelectorAll('.filter-item');
+  renderCount() {
+    if (this.catWrapper) {
+      const arrItemFilter = this.catWrapper.querySelectorAll('.filter-item');
       for (let i = 0; i < arrItemFilter.length; i++) {
         const quantity = arrItemFilter[i].querySelector('.filter-count') as HTMLElement | null;
         const checkboxId = arrItemFilter[i].querySelector('.filter-input')?.getAttribute('id');
@@ -58,8 +57,28 @@ class Filters {
         }
         if (quantity) {
           const arrSymbol = quantity.innerText.split('/');
-          // arrSymbol[0] = String(counter);
-          arrSymbol[0] = '0';
+          arrSymbol[0] = String(counter);
+          // arrSymbol[0] = '0';
+          quantity.innerText = arrSymbol.join('/');
+        }
+      }
+    }
+
+    if (this.brandsWrapper) {
+      const arrItemFilter = this.brandsWrapper.querySelectorAll('.filter-item');
+      for (let i = 0; i < arrItemFilter.length; i++) {
+        const quantity = arrItemFilter[i].querySelector('.filter-count') as HTMLElement | null;
+        const checkboxId = arrItemFilter[i].querySelector('.filter-input')?.getAttribute('id');
+        let counter = 0;
+        for (let i = 0; i < currentCards.length; i++) {
+          if (currentCards[i].product.brand.toLowerCase() === checkboxId) {
+            counter++;
+          }
+        }
+        if (quantity) {
+          const arrSymbol = quantity.innerText.split('/');
+          arrSymbol[0] = String(counter);
+          // arrSymbol[0] = '0';
           quantity.innerText = arrSymbol.join('/');
         }
       }
@@ -84,10 +103,7 @@ class Filters {
     // }
   }
 
-  renderNewCards() {
-    // for (let  = 0;  < array.length; ++) {
-    // }
-  }
+  // renderNewCards() {}
 }
 
 export { Filters };
