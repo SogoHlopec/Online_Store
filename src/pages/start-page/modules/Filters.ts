@@ -19,6 +19,9 @@ class Filters {
     if (container !== null && container !== undefined) {
       const arrItemFilter = container.querySelectorAll('.filter-item');
       container.addEventListener('change', () => {
+        this.renderCount(this.catWrapper);
+        this.renderCount(this.brandsWrapper);
+
         for (let i = 0; i < arrItemFilter.length; i++) {
           const checkbox = arrItemFilter[i].querySelector('.filter-input') as HTMLInputElement | null;
           if (checkbox !== null) {
@@ -28,7 +31,6 @@ class Filters {
             } else {
               arrItemFilter[i].classList.add('filter-item');
               arrItemFilter[i].classList.remove('filter-item-not-active');
-              // this.renderQuantity(arrItemFilter[i]);
             }
           }
         }
@@ -42,10 +44,50 @@ class Filters {
     }
   }
 
-  // renderQuantity(item: Element) {
-  //   const quantity = item.querySelector('.filter-count');
-  //   const counter =
-  // }
+  renderCount(wrap: HTMLElement | null) {
+    if (wrap) {
+      const arrItemFilter = wrap.querySelectorAll('.filter-item');
+      for (let i = 0; i < arrItemFilter.length; i++) {
+        const quantity = arrItemFilter[i].querySelector('.filter-count') as HTMLElement | null;
+        const checkboxId = arrItemFilter[i].querySelector('.filter-input')?.getAttribute('id');
+        let counter = 0;
+        for (let i = 0; i < currentCards.length; i++) {
+          if (currentCards[i].product.category === checkboxId) {
+            counter++;
+          }
+        }
+        if (quantity) {
+          const arrSymbol = quantity.innerText.split('/');
+          // arrSymbol[0] = String(counter);
+          arrSymbol[0] = '0';
+          quantity.innerText = arrSymbol.join('/');
+        }
+      }
+    }
+
+    // const quantity = item.querySelector('.filter-count') as HTMLElement | null;
+    // const checkboxId = item.querySelector('.filter-input')?.getAttribute('id');
+
+    // let counter = 0;
+    // for (let i = 0; i < currentCards.length; i++) {
+    //   if (currentCards[i].product.category === checkboxId) {
+    //     counter++;
+    //   }
+    //   if (currentCards[i].product.brand.toLowerCase() === checkboxId) {
+    //     counter++;
+    //   }
+    // }
+    // if (quantity) {
+    //   const arrSymbol = quantity.innerText.split('/');
+    //   arrSymbol[0] = String(counter);
+    //   quantity.innerText = arrSymbol.join('/');
+    // }
+  }
+
+  renderNewCards() {
+    // for (let  = 0;  < array.length; ++) {
+    // }
+  }
 }
 
 export { Filters };
