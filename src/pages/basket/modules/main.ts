@@ -1,9 +1,7 @@
-import { dataProducts, dataProductsList } from '../../../general/Data';
+import { dataProductsList } from '../../../general/Data';
 import { CreateElem } from '../../../general/CreateElem';
-import { CreateButton } from '../../../general/CreateButton';
-import { CreateCard } from '../../start-page/modules/createCard';
 import { IProduct } from '../../../types/interfaces';
-
+import { CreateCard } from './createCard';
 
 class MainBasket {
   main: HTMLElement;
@@ -27,86 +25,42 @@ class MainBasket {
 
     const objItemsTotal = new CreateElem('div', 'nav-element');
     objDivNavigation.appendElement(objItemsTotal.getElement());
-    objProductsInCart.setInnerText('Items: ');
-    const objItemsCount= new CreateElem('div', 'items-count');
-    objProductsInCart.appendElement(objItemsCount.getElement());
+    objItemsTotal.setInnerText('Items: ');
+    const objItemsCount = new CreateElem('span', 'items-count');
+    objItemsTotal.appendElement(objItemsCount.getElement());
     objItemsCount.setInnerText('5');
 
     const objPages = new CreateElem('div', 'nav-element');
     objDivNavigation.appendElement(objPages.getElement());
     objPages.setInnerText('Page: ');
-    const objPagesCount= new CreateElem('div', 'pages-count');
-    objPages.appendElement(objPagesCount.getElement());
-    const objArrowLeft= new CreateElem('span', 'arrow-left');
-    objPagesCount.appendElement(objArrowLeft.getElement());
+    const objArrowLeft = new CreateElem('span', 'arrow-left');
+    objPages.appendElement(objArrowLeft.getElement());
     objArrowLeft.setClassSelector('arrow');
-    const objArrowRight= new CreateElem('span', 'arrow-right');
-    objPagesCount.appendElement(objArrowLeft.getElement());
+    const objPagesCount = new CreateElem('span', 'pages-count');
+    objPages.appendElement(objPagesCount.getElement());
+    objPagesCount.setInnerText('1');
+    const objArrowRight = new CreateElem('span', 'arrow-right');
+    objPages.appendElement(objArrowRight.getElement());
     objArrowRight.setClassSelector('arrow');
+    this.renderCards(dataProductsList);
+  }
+  //Cоздаем див и рендерим туда такое количество контейнеров, сколько Item у нас в корзине
+  renderCards(data: IProduct[]) {
+    const objSection = document.querySelector('.basket') as HTMLElement;
+    const objItemList = new CreateCard(data[1]);
+    objItemList.render();
+    objItemList.renderItemBasketProps();
+    console.log(objItemList);
+    console.log(data[1]);
+    objSection.append(objItemList.container);
 
-    //Cоздаем див и рендерим туда такое количество контейнеров, сколько Item у нас в корзине
-    const objItemList = new CreateElem('div', 'item-list');
-    objSection.prependElement(objItemList.getElement());
-
-    const objItem = new CreateElem('div', 'basket-item');
-    objItemList.appendElement(objItem.getElement());
-
-    const objItemNum = new CreateElem('span', 'item-number');
-    objItem.appendElement(objItemNum.getElement());
-
-    const objItemImg = new CreateElem('img', 'item-image');
-    objItem.appendElement(objItemImg.getElement());
-    objItemImg.getElement().setAttribute('src', `#`);
-
-    const objItemDescr = new CreateElem('div', 'item-description');
-    objItem.appendElement(objItemDescr.getElement());
-    const objItemTitle = new CreateElem('h3', 'item-title');
-    objItemDescr.appendElement(objItemTitle.getElement());
-    const objItemAbout = new CreateElem('p', 'item-about');
-    objItemDescr.appendElement(objItemAbout.getElement());
-
-    const objItemInfo1 = new CreateElem('div', 'item-info');
-    objItem.appendElement(objItemInfo1.getElement());
-    const objItemCategory = new CreateElem('p', 'item-category');
-    objItemInfo1.appendElement(objItemCategory.getElement());
-    objItemCategory.setInnerText(`Category: #`)
-    const objItemBrand = new CreateElem('p', 'item-brand');
-    objItemInfo1.appendElement(objItemBrand.getElement());
-    objItemCategory.setInnerText(`Brand: #`)
-    
-    const objItemInfo2 = new CreateElem('div', 'item-info');
-    objItem.appendElement(objItemInfo2.getElement());
-    const objItemDiscount = new CreateElem('p', 'item-discount');
-    objItemInfo2.appendElement(objItemDiscount.getElement());
-    objItemCategory.setInnerText(`Discount: #`)
-    const objItemRating = new CreateElem('p', 'item-rating');
-    objItemInfo2.appendElement(objItemRating.getElement());
-    objItemCategory.setInnerText(`Rating: #`)
-
-    const objItemInfo3 = new CreateElem('div', 'item-info');
-    objItem.appendElement(objItemInfo3.getElement());
-    objItemInfo3.setInnerText(`Stock: #`);
-  
-    const objItemInfo4 = new CreateElem('div', 'item-info');
-    objItem.appendElement(objItemInfo4.getElement());
-    const objItemCount = new CreateElem('div', 'item-count');
-    const objCountArrowLeft= new CreateElem('span', 'count-less');
-    objItemCount.appendElement(objCountArrowLeft.getElement());
-    objCountArrowLeft.setClassSelector('arrow');
-    const objCountArrowRight= new CreateElem('span', 'count-more');
-    objItemCount.appendElement(objCountArrowRight.getElement());
-    objCountArrowRight.setClassSelector('arrow');
-    const objSortOptions = new CreateElem('select', 'sort-options');
-    objSortBar.prependElement(objSortOptions.getElement());
-    objSortOptions.setClassSelector('button');
-
-    const objSortTitle = new CreateElem('option', 'sort-title');
-    objSortTitle.setInnerText('Sort options:');
-    objSortTitle.getElement().setAttribute('disabled', 'disabled');
-    objSortTitle.getElement().setAttribute('selected', 'selected');
-    objSortTitle.getElement().setAttribute('value', 'sort-title');
-    objSortOptions.prependElement(objSortTitle.getElement());
-
+    /*CardsWrapper.innerHTML = '';
+    currentCards.splice(0, currentCards.length);
+    for (let i = 0; i < data.length; i++) {
+      const objCard = new CreateCard(data[i]);
+      currentCards.push(objCard);
+      objCard.render();
+      CardsWrapper.append(objCard.cardContainer);*/
   }
 }
 
