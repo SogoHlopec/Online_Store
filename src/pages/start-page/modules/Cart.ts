@@ -64,20 +64,21 @@ class Cart {
     this.renderCounterAndPrice();
   }
 
-  eventClick(target: Element) {
-    if (target.classList.contains('btn-add')) {
-      if (target.classList.contains('btn-add-active')) {
-        this.deleteProduct(Number(target.getAttribute('id')));
-      } else {
-        this.addProduct(Number(target.getAttribute('id')));
+  eventClick(target: Element | null) {
+    if (target)
+      if (target.classList.contains('btn-add')) {
+        if (target.classList.contains('btn-add-active')) {
+          this.deleteProduct(Number(target.getAttribute('id')));
+        } else {
+          this.addProduct(Number(target.getAttribute('id')));
+        }
+        target.classList.toggle('btn-add-active');
+        if (target.textContent === 'Add to Cart') {
+          target.textContent = 'Drop from Cart';
+        } else {
+          target.textContent = 'Add to Cart';
+        }
       }
-      target.classList.toggle('btn-add-active');
-      if (target.textContent === 'Add to Cart') {
-        target.textContent = 'Drop from Cart';
-      } else {
-        target.textContent = 'Add to Cart';
-      }
-    }
   }
 }
 export { Cart };

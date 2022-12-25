@@ -43,12 +43,27 @@ class Main {
     objDivCategory.appendElement(objFilterCatWrapper.getElement());
 
     //! Create filters categories start !
-    const categories: string[] = [];
+    //! set categories { categories: string; count: number }[] !
+    const categories: { categories: string; count: number }[] = [];
+    const arrCategories: string[] = [];
+    const arrCategoriesTemp: string[] = [];
     dataProductsList.forEach((item: IProduct): void => {
-      if (!categories.includes(item.category)) {
-        categories.push(item.category);
-      }
+      arrCategories.push(item.category.toLowerCase());
     });
+    for (let i = 0; i < arrCategories.length; i++) {
+      let count = 0;
+      for (let j = 0; j < arrCategories.length; j++) {
+        if (!arrCategoriesTemp.includes(arrCategories[i])) {
+          if (arrCategories[i] === arrCategories[j]) {
+            count++;
+          }
+        }
+      }
+      if (count) {
+        arrCategoriesTemp.push(arrCategories[i]);
+        categories.push({ categories: arrCategories[i], count: count });
+      }
+    }
 
     for (let i = 0; i < categories.length; i++) {
       const objFilterItem = new CreateElem('div', 'filter-item');
@@ -57,17 +72,18 @@ class Main {
       const objFilterInput = new CreateElem('input', 'filter-input');
       objFilterItem.appendElement(objFilterInput.getElement());
       objFilterInput.getElement().setAttribute('type', 'checkbox');
-      objFilterInput.getElement().setAttribute('id', `${categories[i]}`);
+      objFilterInput.getElement().setAttribute('id', `${categories[i].categories}`);
 
       const objFilterLabel = new CreateElem('label', 'filter-label');
-      objFilterLabel.setInnerText(`${categories[i]}`);
-      objFilterLabel.getElement().setAttribute('for', `${categories[i]}`);
+      objFilterLabel.setInnerText(`${categories[i].categories}`);
+      objFilterLabel.getElement().setAttribute('for', `${categories[i].categories}`);
       objFilterItem.appendElement(objFilterLabel.getElement());
 
       const objFilterCount = new CreateElem('span', 'filter-count');
       objFilterItem.appendElement(objFilterCount.getElement());
-      objFilterCount.setInnerText('5/5');
+      objFilterCount.setInnerText(`${categories[i].count}/${categories[i].count}`);
     }
+    //! Create filters categories stop !
 
     //! create filters brands !
     const objDivBrand = new CreateElem('div', 'filter-brand');
@@ -82,7 +98,7 @@ class Main {
     objFilterBrandWrapper.setClassSelector('filter-wrapper');
     objDivBrand.appendElement(objFilterBrandWrapper.getElement());
 
-    //! set brands { nameBrand: count} !
+    //! set brands { brand: string; count: number }[] !
     const brands: { brand: string; count: number }[] = [];
     const arrBrands: string[] = [];
     const arrBrandsTemp: string[] = [];
@@ -138,7 +154,7 @@ class Main {
     objTitleStock.setClassSelector('title-filter');
     objTitleStock.setInnerText('Stock');
     objDivStock.prependElement(objTitleStock.getElement());
-    // ! Create categories filters stop!
+    // ! Create filters brands stop!
 
     const objSectionCatalog = new CreateElem('section', 'catalog');
     this.main.append(objSectionCatalog.getElement());
@@ -199,13 +215,17 @@ class Main {
 
     const objCardsWrapper = new CreateElem('div', 'cards-wrapper');
     objCardsContainer.appendElement(objCardsWrapper.getElement());
+    this.renderCards(dataProductsList);
+  }
 
+  renderCards(data: IProduct[]) {
     // ! create Cards !
-    for (let i = 0; i < dataProductsList.length; i++) {
-      const objCard = new CreateCard(dataProductsList[i]);
+    const CardsWrapper = document.querySelector('.cards-wrapper') as HTMLElement;
+    for (let i = 0; i < data.length; i++) {
+      const objCard = new CreateCard(data[i]);
       currentCards.push(objCard);
       objCard.render();
-      objCardsWrapper.appendElement(objCard.cardContainer);
+      CardsWrapper.append(objCard.cardContainer);
     }
   }
 }

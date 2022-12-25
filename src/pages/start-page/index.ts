@@ -5,7 +5,7 @@ import { Header } from './modules/header';
 import Footer from './modules/footer';
 import { Main } from './modules/main';
 import { cart } from './modules/header';
-import { objfilters } from './modules/Filters';
+import { Filters } from './modules/Filters';
 
 class StartPage {
   private body: HTMLElement;
@@ -34,19 +34,17 @@ class StartPage {
     this.footer.render();
     this.main.render();
 
-    // ! Events !
-    // ! add/delete product in Cart start!
+    //                              ! Events START!
+    // ! add/delete product in Cart!
     document.addEventListener('click', (e) => {
-      const target = e.target as Element; // TODO check for null
+      const target = e.target as Element | null;
       cart.eventClick(target);
     });
-    // ! add product in Cart stop!
-    //! add style for not active filters start!
-    const wrap = document.querySelector('.filter-cat-wrapper') as HTMLElement | null;
-    if (wrap !== null) {
-      objfilters.eventChange(wrap);
-    }
-    //! add style for not active filters stop!
+    // ! add style for filters events!
+    const objFilters = new Filters();
+    objFilters.eventChange('categories');
+    objFilters.eventChange('brands');
+    //                              ! Events STOP!
   }
 }
 
