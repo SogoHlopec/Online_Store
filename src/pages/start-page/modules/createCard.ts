@@ -69,6 +69,9 @@ class CreateCard {
     objBtnDetails.setClassSelector('button');
     objCardBtnContainer.appendElement(objBtnDetails.getElement());
   }
+  
+  //renderList
+  
 }
 
 export { CreateCard };
