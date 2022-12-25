@@ -5,6 +5,7 @@ import { CreateCard } from './createCard';
 import { IProduct } from '../../../types/interfaces';
 
 const totalProducts = dataProducts.total;
+const currentCards: CreateCard[] = [];
 
 class Main {
   main: HTMLElement;
@@ -37,67 +38,54 @@ class Main {
     objTitleCategory.setInnerText('Category');
     objDivCategory.prependElement(objTitleCategory.getElement());
 
-    const objFilterWrapper = new CreateElem('div', 'filter-wrapper');
-    objDivCategory.appendElement(objFilterWrapper.getElement());
+    const objFilterCatWrapper = new CreateElem('div', 'filter-cat-wrapper');
+    objFilterCatWrapper.setClassSelector('filter-wrapper');
+    objDivCategory.appendElement(objFilterCatWrapper.getElement());
 
-    const categories: string[] = [];
+    //! Create filters categories start !
+    //! set categories { categories: string; count: number }[] !
+    const categories: { categories: string; count: number }[] = [];
+    const arrCategories: string[] = [];
+    const arrCategoriesTemp: string[] = [];
     dataProductsList.forEach((item: IProduct): void => {
-      if (!categories.includes(item.category)) {
-        categories.push(item.category);
-      }
+      arrCategories.push(item.category.toLowerCase());
     });
+    for (let i = 0; i < arrCategories.length; i++) {
+      let count = 0;
+      for (let j = 0; j < arrCategories.length; j++) {
+        if (!arrCategoriesTemp.includes(arrCategories[i])) {
+          if (arrCategories[i] === arrCategories[j]) {
+            count++;
+          }
+        }
+      }
+      if (count) {
+        arrCategoriesTemp.push(arrCategories[i]);
+        categories.push({ categories: arrCategories[i], count: count });
+      }
+    }
 
     for (let i = 0; i < categories.length; i++) {
       const objFilterItem = new CreateElem('div', 'filter-item');
-      objFilterWrapper.appendElement(objFilterItem.getElement());
+      objFilterCatWrapper.appendElement(objFilterItem.getElement());
 
       const objFilterInput = new CreateElem('input', 'filter-input');
       objFilterItem.appendElement(objFilterInput.getElement());
       objFilterInput.getElement().setAttribute('type', 'checkbox');
-      objFilterInput.getElement().setAttribute('id', `${categories[i]}`);
+      objFilterInput.getElement().setAttribute('id', `${categories[i].categories}`);
 
       const objFilterLabel = new CreateElem('label', 'filter-label');
+      objFilterLabel.setInnerText(`${categories[i].categories}`);
+      objFilterLabel.getElement().setAttribute('for', `${categories[i].categories}`);
       objFilterItem.appendElement(objFilterLabel.getElement());
-      objFilterLabel.setInnerText(`${categories[i]}`);
 
       const objFilterCount = new CreateElem('span', 'filter-count');
       objFilterItem.appendElement(objFilterCount.getElement());
-      objFilterCount.setInnerText('5/5');
+      objFilterCount.setInnerText(`${categories[i].count}/${categories[i].count}`);
     }
+    //! Create filters categories stop !
 
-    const brands: string[] = [];
-    const brandsTemp: string[] = [];
-    dataProductsList.forEach((item: IProduct): void => {
-      if (!brandsTemp.includes(item.brand.toLowerCase())) {
-        brandsTemp.push(item.brand.toLowerCase());
-        brands.push(item.brand);
-      }
-    });
-
-    console.log(brands);
-
-    for (let i = 0; i < brands.length; i++) {
-      const objFilterItem = new CreateElem('div', 'filter-item');
-      objFilterWrapper.appendElement(objFilterItem.getElement());
-
-      const objFilterInput = new CreateElem('input', 'filter-input');
-      objFilterItem.appendElement(objFilterInput.getElement());
-      objFilterInput.getElement().setAttribute('type', 'checkbox');
-      objFilterInput.getElement().setAttribute('id', `${brands[i]}`);
-
-      const objFilterLabel = new CreateElem('label', 'filter-label');
-      objFilterItem.appendElement(objFilterLabel.getElement());
-      objFilterLabel.setInnerText(`${brands[i]}`);
-
-      const objFilterCount = new CreateElem('span', 'filter-count');
-      objFilterItem.appendElement(objFilterCount.getElement());
-      objFilterCount.setInnerText('5/5');
-    }
-
-    /*const brandsList = dataProductsList.filter((item: IProduct): string[] => {
-      item.
-    } )*/
-
+    //! create filters brands !
     const objDivBrand = new CreateElem('div', 'filter-brand');
     objAsideFilters.appendElement(objDivBrand.getElement());
 
@@ -105,6 +93,51 @@ class Main {
     objTitleBrand.setClassSelector('title-filter');
     objTitleBrand.setInnerText('Brand');
     objDivBrand.prependElement(objTitleBrand.getElement());
+
+    const objFilterBrandWrapper = new CreateElem('div', 'filter-brand-wrapper');
+    objFilterBrandWrapper.setClassSelector('filter-wrapper');
+    objDivBrand.appendElement(objFilterBrandWrapper.getElement());
+
+    //! set brands { brand: string; count: number }[] !
+    const brands: { brand: string; count: number }[] = [];
+    const arrBrands: string[] = [];
+    const arrBrandsTemp: string[] = [];
+    dataProductsList.forEach((item: IProduct): void => {
+      arrBrands.push(item.brand.toLowerCase());
+    });
+    for (let i = 0; i < arrBrands.length; i++) {
+      let count = 0;
+      for (let j = 0; j < arrBrands.length; j++) {
+        if (!arrBrandsTemp.includes(arrBrands[i])) {
+          if (arrBrands[i] === arrBrands[j]) {
+            count++;
+          }
+        }
+      }
+      if (count) {
+        arrBrandsTemp.push(arrBrands[i]);
+        brands.push({ brand: arrBrands[i], count: count });
+      }
+    }
+
+    for (let i = 0; i < brands.length; i++) {
+      const objFilterItem = new CreateElem('div', 'filter-item');
+      objFilterBrandWrapper.appendElement(objFilterItem.getElement());
+
+      const objFilterInput = new CreateElem('input', 'filter-input');
+      objFilterItem.appendElement(objFilterInput.getElement());
+      objFilterInput.getElement().setAttribute('type', 'checkbox');
+      objFilterInput.getElement().setAttribute('id', `${brands[i].brand}`);
+
+      const objFilterLabel = new CreateElem('label', 'filter-label');
+      objFilterLabel.setInnerText(`${brands[i].brand}`);
+      objFilterLabel.getElement().setAttribute('for', `${brands[i].brand}`);
+      objFilterItem.appendElement(objFilterLabel.getElement());
+
+      const objFilterCount = new CreateElem('span', 'filter-count');
+      objFilterItem.appendElement(objFilterCount.getElement());
+      objFilterCount.setInnerText(`${brands[i].count}/${brands[i].count}`);
+    }
 
     const objDivPrice = new CreateElem('div', 'filter-price');
     objAsideFilters.appendElement(objDivPrice.getElement());
@@ -121,6 +154,7 @@ class Main {
     objTitleStock.setClassSelector('title-filter');
     objTitleStock.setInnerText('Stock');
     objDivStock.prependElement(objTitleStock.getElement());
+    // ! Create filters brands stop!
 
     const objSectionCatalog = new CreateElem('section', 'catalog');
     this.main.append(objSectionCatalog.getElement());
@@ -181,13 +215,21 @@ class Main {
 
     const objCardsWrapper = new CreateElem('div', 'cards-wrapper');
     objCardsContainer.appendElement(objCardsWrapper.getElement());
+    this.renderCards(dataProductsList);
+  }
 
-    for (let i = 0; i < dataProductsList.length; i++) {
-      const objCard = new CreateCard(dataProductsList[i]);
+  renderCards(data: IProduct[]) {
+    // ! create Cards !
+    const CardsWrapper = document.querySelector('.cards-wrapper') as HTMLElement;
+    CardsWrapper.innerHTML = '';
+    currentCards.splice(0, currentCards.length);
+    for (let i = 0; i < data.length; i++) {
+      const objCard = new CreateCard(data[i]);
+      currentCards.push(objCard);
       objCard.render();
-      objCardsWrapper.appendElement(objCard.cardContainer);
+      CardsWrapper.append(objCard.cardContainer);
     }
   }
 }
 
-export { CreateElem, Main };
+export { Main, currentCards };

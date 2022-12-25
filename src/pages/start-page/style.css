@@ -54,12 +54,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0px 3px 4px rgba(27, 78, 163, 0.2));
+  filter: drop-shadow(0px 3px 4px rgba(27, 78, 163, 0.4));
   color: #2264d1;
   font-weight: 700;
   outline: none;
   border: none;
   text-align: center;
+}
+
+.button:hover {
+  cursor: pointer;
+  filter: drop-shadow(0px 3px 4px rgba(27, 78, 163, 1));
 }
 
 .basket {
@@ -92,6 +97,7 @@
   background-color: #d9d9d9;
   height: 88px;
   margin: 0 auto;
+  padding: 10px;
   width: 100%;
   border-radius: 20px 20px 0 0;
   display: flex;
@@ -117,11 +123,20 @@
   color: #000000;
 }
 
+.social:hover {
+  text-decoration: underline;
+}
+
 .rs-logo {
-  cursor: pointer;
   width: 120px;
   height: 44px;
   background-image: url('../../assets/svg/rs-logo.svg');
+}
+
+.rs-logo:hover {
+  cursor: pointer;
+  transform: scale(0.9);
+  transition: transform 0.5s;
 }
 
 /*Main*/
@@ -135,13 +150,11 @@
 }
 
 .filters {
-  width: 16.4%;
-  /*height: 60%;*/
+  max-width: 300px;
   background-color: #ececec;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   font-size: 1.25rem;
 }
@@ -151,11 +164,13 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .btn-copy-link,
 .btn-reset {
-  max-width: 120px;
+  width: 40%;
   max-height: 25px;
 }
 
@@ -168,23 +183,43 @@
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  overflow: auto;
 }
 
 .filter-category {
-  height: 35%;
 }
 
 .filter-price {
-  height: 35%;
 }
 
 .filter-brand {
-  height: 15%;
 }
 
 .filter-stock {
-  height: 15%;
+}
+
+.filter-wrapper {
+  height: 15rem;
+  overflow: auto;
+  padding: 2%;
+}
+
+.filter-item,
+.filter-item-not-active {
+  display: flex;
+  align-items: center;
+}
+
+.filter-item-not-active {
+  color: rgb(0, 0, 0, 0.5);
+}
+
+.filter-input,
+.filter-label:hover {
+  cursor: pointer;
+}
+
+.filter-count {
+  margin-left: auto;
 }
 
 .title-filter {
@@ -221,6 +256,7 @@
 
 .sort-options {
   height: 100%;
+  width: 100%;
 }
 
 .title-found {
@@ -325,4 +361,8 @@
   width: 120px;
   height: 25px;
   padding-top: 0.2rem;
+}
+
+.btn-add-active {
+  color: red;
 }

@@ -1,4 +1,4 @@
-import { dataProducts, dataProductsList } from '../../../general/Data';
+// import { dataProducts, dataProductsList } from '../../../general/Data';
 import { CreateButton } from '../../../general/CreateButton';
 import { CreateElem } from '../../../general/CreateElem';
 import { IProduct } from '../../../types/interfaces';
@@ -63,15 +63,18 @@ class CreateCard {
 
     const objBtnAdd = new CreateButton('Add to Cart', 'btn-add');
     objBtnAdd.setClassSelector('button');
+    objBtnAdd.getElement().setAttribute('id', `${this.product.id}`);
     objCardBtnContainer.prependElement(objBtnAdd.getElement());
 
     const objBtnDetails = new CreateButton('Details', 'btn-details');
     objBtnDetails.setClassSelector('button');
+    objBtnDetails.getElement().setAttribute('id', `${this.product.id}`);
     objCardBtnContainer.appendElement(objBtnDetails.getElement());
   }
-  
-  //renderList
-  
+
+  delete() {
+    this.cardContainer.remove();
+  }
 }
 
 export { CreateCard };

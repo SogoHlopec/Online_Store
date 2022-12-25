@@ -15,35 +15,27 @@ class Footer {
     const githubLinks = document.createElement('div');
     githubLinks.className = 'github';
     githubLinks.innerText = 'GitHub:';
-    const githubSogo = document.createElement('span');
-    githubSogo.className = 'github';
-    githubSogo.innerText = 'SogoHlopec';
     const githubLinkSogo = document.createElement('a');
     githubLinkSogo.className = 'social';
+    githubLinkSogo.innerText = 'SogoHlopec';
     githubLinkSogo.href = 'https://github.com/SogoHlopec';
     const and = document.createElement('span');
     and.className = 'github';
     and.innerText = ' and ';
-    const githubGalina = document.createElement('span');
-    githubGalina.className = 'github';
-    githubGalina.innerText = 'Galigalinochka';
     const githubLinkGalina = document.createElement('a');
     githubLinkGalina.className = 'social';
+    githubLinkGalina.innerText = 'Galigalinochka';
     githubLinkGalina.href = 'https://github.com/galigalinochka';
-    const rsLogo = document.createElement('div');
-    rsLogo.className = 'rs-logo';
     const rsLink = document.createElement('a');
+    rsLink.className = 'rs-logo';
     rsLink.href = 'https://rs.school/js/';
     this.footer.prepend(footerContainer);
     footerContainer.prepend(year);
     footerContainer.append(githubLinks);
-    footerContainer.append(rsLogo);
+    footerContainer.append(rsLink);
     githubLinks.append(githubLinkSogo);
-    githubLinkSogo.append(githubSogo);
     githubLinks.append(and);
     githubLinks.append(githubLinkGalina);
-    githubLinkGalina.prepend(githubGalina);
-    rsLogo.prepend(rsLink);
   }
 }
 
