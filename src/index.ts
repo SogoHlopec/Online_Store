@@ -7,3 +7,4 @@ const startPage = new StartPage();
 startPage.run();
 startPage.renderPage();
 // page404.render();
+export { startPage };

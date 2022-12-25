@@ -5,7 +5,7 @@ import { CreateCard } from './createCard';
 import { IProduct } from '../../../types/interfaces';
 
 const totalProducts = dataProducts.total;
-let currentCards: CreateCard[] = [];
+const currentCards: CreateCard[] = [];
 
 class Main {
   main: HTMLElement;
@@ -221,7 +221,8 @@ class Main {
   renderCards(data: IProduct[]) {
     // ! create Cards !
     const CardsWrapper = document.querySelector('.cards-wrapper') as HTMLElement;
-    currentCards = [];
+    CardsWrapper.innerHTML = '';
+    currentCards.splice(0, currentCards.length);
     for (let i = 0; i < data.length; i++) {
       const objCard = new CreateCard(data[i]);
       currentCards.push(objCard);
