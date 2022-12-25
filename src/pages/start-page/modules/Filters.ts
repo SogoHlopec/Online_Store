@@ -45,14 +45,20 @@ class Filters {
         this.renderNewCards(text, this.selectedFilterCat);
         this.renderCount();
         if (container !== null && container !== undefined && container.querySelectorAll('.filter-item').length === 0) {
-          // const initialFilterCat = dataProductsList.map((item) => item.category);
           for (let j = 0; j < arrItemFilter.length; j++) {
             arrItemFilter[j].classList.remove('filter-item-not-active');
             arrItemFilter[j].classList.add('filter-item');
-            this.renderNewCards(
-              text,
-              dataProductsList.map((item) => item.category)
-            );
+            if (text === 'categories') {
+              this.renderNewCards(
+                text,
+                dataProductsList.map((item) => item.category)
+              );
+            } else if (text === 'brands') {
+              this.renderNewCards(
+                text,
+                dataProductsList.map((item) => item.brand.toLowerCase())
+              );
+            }
             this.renderCount();
           }
         }
@@ -75,31 +81,29 @@ class Filters {
         if (count) {
           const arrSymbol = count.innerText.split('/');
           arrSymbol[0] = String(counter);
-          // arrSymbol[0] = 't';
           count.innerText = arrSymbol.join('/');
         }
       }
     }
 
-    // if (this.brandsWrapper) {
-    //   const arrItemFilter = this.brandsWrapper.querySelectorAll('.filter-item');
-    //   for (let i = 0; i < arrItemFilter.length; i++) {
-    //     const quantity = arrItemFilter[i].querySelector('.filter-count') as HTMLElement | null;
-    //     const checkboxId = arrItemFilter[i].querySelector('.filter-input')?.getAttribute('id');
-    //     let counter = 0;
-    //     for (let i = 0; i < dataProductsList.length; i++) {
-    //       if (dataProductsList[i].brand.toLowerCase() === checkboxId) {
-    //         counter++;
-    //       }
-    //     }
-    //     if (quantity) {
-    //       const arrSymbol = quantity.innerText.split('/');
-    //       arrSymbol[0] = String(counter);
-    //       // arrSymbol[0] = '0';
-    //       quantity.innerText = arrSymbol.join('/');
-    //     }
-    //   }
-    // }
+    if (this.brandsWrapper) {
+      const arrItemFilter = this.brandsWrapper.querySelectorAll('.filter-item, .filter-item-not-active');
+      for (let i = 0; i < arrItemFilter.length; i++) {
+        const count = arrItemFilter[i].querySelector('.filter-count') as HTMLElement | null;
+        const checkboxId = arrItemFilter[i].querySelector('.filter-input')?.getAttribute('id');
+        let counter = 0;
+        for (let i = 0; i < currentCards.length; i++) {
+          if (currentCards[i].product.brand.toLowerCase() === checkboxId) {
+            counter++;
+          }
+        }
+        if (count) {
+          const arrSymbol = count.innerText.split('/');
+          arrSymbol[0] = String(counter);
+          count.innerText = arrSymbol.join('/');
+        }
+      }
+    }
   }
 
   renderNewCards(text: string, id: string[]) {
@@ -110,9 +114,15 @@ class Filters {
           this.filteredProducts.push(dataProductsList[i]);
         }
       }
-      startPage.main.renderCards(this.filteredProducts);
-      this.selectedFilterCat.length = 0;
+    } else if (text === 'brands') {
+      for (let i = 0; i < dataProductsList.length; i++) {
+        if (id.includes(dataProductsList[i].brand.toLowerCase())) {
+          this.filteredProducts.push(dataProductsList[i]);
+        }
+      }
     }
+    startPage.main.renderCards(this.filteredProducts);
+    this.selectedFilterCat.length = 0;
   }
 }
 export { Filters };
