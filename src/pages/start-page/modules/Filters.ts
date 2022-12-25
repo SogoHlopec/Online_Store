@@ -83,24 +83,6 @@ class Filters {
         }
       }
     }
-
-    // const quantity = item.querySelector('.filter-count') as HTMLElement | null;
-    // const checkboxId = item.querySelector('.filter-input')?.getAttribute('id');
-
-    // let counter = 0;
-    // for (let i = 0; i < currentCards.length; i++) {
-    //   if (currentCards[i].product.category === checkboxId) {
-    //     counter++;
-    //   }
-    //   if (currentCards[i].product.brand.toLowerCase() === checkboxId) {
-    //     counter++;
-    //   }
-    // }
-    // if (quantity) {
-    //   const arrSymbol = quantity.innerText.split('/');
-    //   arrSymbol[0] = String(counter);
-    //   quantity.innerText = arrSymbol.join('/');
-    // }
   }
 
   // renderNewCards() {}
