@@ -105,9 +105,6 @@ class Filters {
   renderNewCards(text: string, id: string[]) {
     this.filteredProducts.length = 0;
     if (text === 'categories') {
-      // console.log(arr);
-      // console.log(id);
-      // console.log(currentCards);
       for (let i = 0; i < dataProductsList.length; i++) {
         if (id.includes(dataProductsList[i].category)) {
           this.filteredProducts.push(dataProductsList[i]);
