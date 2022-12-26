@@ -24,7 +24,7 @@ class MainBasket {
 
     const objItemsTotal = new CreateElem('div', 'nav-element');
     objDivNavigation.appendElement(objItemsTotal.getElement());
-    objItemsTotal.setInnerText('Items: ');
+    objItemsTotal.setInnerText('Items:  ');
     const objItemsCount = new CreateElem('span', 'items-count');
     objItemsTotal.appendElement(objItemsCount.getElement());
     objItemsCount.setInnerText('5');
@@ -32,8 +32,9 @@ class MainBasket {
     const objPages = new CreateElem('div', 'nav-element');
     objDivNavigation.appendElement(objPages.getElement());
     objPages.setInnerText('Page: ');
-    const objArrowLeft = new CreateElem('span', 'arrow-left');
+    const objArrowLeft = new CreateElem('img', 'arrow-left');
     objPages.appendElement(objArrowLeft.getElement());
+    objArrowLeft.getElement().setAttribute('src', '../../assets/svg/arrow-left.svg');
     objArrowLeft.setClassSelector('arrow');
     const objPagesCount = new CreateElem('span', 'pages-count');
     objPages.appendElement(objPagesCount.getElement());
