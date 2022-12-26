@@ -23,7 +23,8 @@ class Basket {
   }
 
   renderPage() {
-    this.main.render();
+    this.main.renderItems();
+    this.main.renderSummary();
   }
 }
 

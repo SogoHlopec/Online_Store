@@ -8,11 +8,10 @@ class MainBasket {
 
   constructor() {
     this.main = document.createElement('main');
+    this.main.className = 'main';
   }
 
-  render() {
-    this.main.className = 'main';
-
+  renderItems() {
     const objSection = new CreateElem('section', 'basket');
     this.main.append(objSection.getElement());
 
@@ -61,6 +60,36 @@ class MainBasket {
       currentCards.push(objCard);
       objCard.render();
       CardsWrapper.append(objCard.cardContainer);*/
+  }
+
+  renderSummary() {
+    const objSection = new CreateElem('section', 'summary');
+    this.main.append(objSection.getElement());
+
+    const objSummaryTitle = new CreateElem('p', 'summary-title');
+    objSection.prependElement(objSummaryTitle.getElement());
+    objSummaryTitle.setInnerText('Summary');
+
+    const objSummaryProducts = new CreateElem('p', 'summary-products');
+    objSection.appendElement(objSummaryProducts.getElement());
+    objSummaryProducts.setInnerText(`Products: `);
+
+    const objSummaryTotal = new CreateElem('p', 'summary-total');
+    objSection.appendElement(objSummaryTotal.getElement());
+    objSummaryTotal.setInnerText(`Total: €`);
+
+    const objPromo = new CreateElem('input', 'promocode');
+    objPromo.getElement().setAttribute('type', 'search');
+    objPromo.getElement().setAttribute('placeholder', 'Enter promo code');
+    objSection.appendElement(objPromo.getElement());
+
+    const objPromoHelp = new CreateElem('p', 'promo-helper');
+    objSection.appendElement(objPromoHelp.getElement());
+    objPromoHelp.setInnerText(`Promo for test ‘rs’, ‘epm’`);
+
+    const objBuyButton = new CreateElem('button', 'buy-button');
+    objSection.appendElement(objBuyButton.getElement());
+    objBuyButton.setInnerText('BUY NOW');
   }
 }
 
