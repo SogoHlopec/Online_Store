@@ -59,7 +59,7 @@ class Filters {
                 dataProductsList.map((item) => item.brand.toLowerCase())
               );
             }
-            this.renderCount();
+            this.renderCount(); // TODO optimize!
           }
         }
       });
