@@ -32,9 +32,9 @@ class MainBasket {
     const objPages = new CreateElem('div', 'nav-element');
     objDivNavigation.appendElement(objPages.getElement());
     objPages.setInnerText('Page: ');
-    const objArrowLeft = new CreateElem('img', 'arrow-left');
+    objPages.setClassSelector('pages-count');
+    const objArrowLeft = new CreateElem('span', 'arrow-left');
     objPages.appendElement(objArrowLeft.getElement());
-    objArrowLeft.getElement().setAttribute('src', '../../assets/svg/arrow-left.svg');
     objArrowLeft.setClassSelector('arrow');
     const objPagesCount = new CreateElem('span', 'pages-count');
     objPages.appendElement(objPagesCount.getElement());

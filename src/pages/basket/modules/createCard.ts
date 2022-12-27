@@ -44,6 +44,7 @@ class CreateCard {
     const objItemInfo3 = new CreateElem('div', 'item-info');
     this.container.append(objItemInfo3.getElement());
     objItemInfo3.setInnerText(`Stock: #`);
+    objItemInfo3.setClassSelector('stock');
   }
 
   renderItemBasketProps() {
