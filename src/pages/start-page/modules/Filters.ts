@@ -122,18 +122,44 @@ class Filters {
     // }
   }
 
+  // renderNewCards(text: string, id: string[]) {
+  //   this.filteredProducts.length = 0;
+  //   if (currentCards.length === 0) {
+  //     startPage.main.renderCards(dataProductsList);
+  //     return;
+  //   }
+  //   if (text === 'categories') {
+  //     for (let i = 0; i < currentCards.length; i++) {
+  //       if (id.includes(currentCards[i].product.category)) {
+  //         this.filteredProducts.push(currentCards[i].product);
+  //       }
+  //     }
+  //   } else if (text === 'brands') {
+  //     for (let i = 0; i < currentCards.length; i++) {
+  //       if (id.includes(currentCards[i].product.brand.toLowerCase())) {
+  //         this.filteredProducts.push(currentCards[i].product);
+  //       }
+  //     }
+  //   }
+  //   startPage.main.renderCards(this.filteredProducts);
+  //   this.selectedFilterCat.length = 0;
+  // }
   renderNewCards(text: string, id: string[]) {
     this.filteredProducts.length = 0;
+    if (currentCards.length === 0) {
+      startPage.main.renderCards(dataProductsList);
+      return;
+    }
     if (text === 'categories') {
-      for (let i = 0; i < currentCards.length; i++) {
-        if (id.includes(currentCards[i].product.category)) {
-          this.filteredProducts.push(currentCards[i].product);
+      for (let i = 0; i < dataProductsList.length; i++) {
+        if (id.includes(dataProductsList[i].category)) {
+          this.filteredProducts.push(dataProductsList[i]);
         }
       }
     } else if (text === 'brands') {
-      for (let i = 0; i < currentCards.length; i++) {
-        if (id.includes(currentCards[i].product.brand.toLowerCase())) {
-          this.filteredProducts.push(currentCards[i].product);
+      for (let i = 0; i < dataProductsList.length; i++) {
+        if (id.includes(dataProductsList[i].brand.toLowerCase())) {
+          this.filteredProducts.push(dataProductsList[i]);
         }
       }
     }
