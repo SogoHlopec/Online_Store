@@ -4,7 +4,7 @@ import { CreateElem } from '../../general/CreateElem';
 import { CreateButton } from '../../general/CreateButton';
 import { CreateCard } from '../start-page/modules/createCard';
 import { IProduct } from '../../types/interfaces';*/
-import Main from '../basket/modules/main';
+import { MainBasket } from './modules/main';
 
 class Basket {
   private body: HTMLElement;
@@ -12,7 +12,7 @@ class Basket {
 
   constructor() {
     this.body = document.body;
-    this.main = new Main();
+    this.main = new MainBasket();
   }
 
   render() {
@@ -28,4 +28,4 @@ class Basket {
   }
 }
 
-export default Basket;
+export { Basket };

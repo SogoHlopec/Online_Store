@@ -13,7 +13,7 @@ class MainBasket {
   }
 
   renderItems() {
-    const objSection = new CreateElem('section', 'basket');
+    const objSection = new CreateElem('section', 'main-basket');
     this.main.append(objSection.getElement());
 
     const objDivNavigation = new CreateElem('div', 'basket-navigation');
@@ -47,7 +47,7 @@ class MainBasket {
   }
   //Cоздаем див и рендерим туда такое количество контейнеров, сколько Item у нас в корзине
   renderCards() {
-    const objSection = document.querySelector('.basket') as HTMLElement;
+    const objSection = document.querySelector('.main-basket') as HTMLElement;
     //const cartItems = cart.currentCartProducts;
     console.log(cart);
     /*for (let i = 0; i < cartItems.length; i++) {
@@ -98,4 +98,4 @@ class MainBasket {
   }
 }
 
-export default MainBasket;
+export { MainBasket };
