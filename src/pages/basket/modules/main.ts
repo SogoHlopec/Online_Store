@@ -1,7 +1,8 @@
-import { dataProductsList } from '../../../general/Data';
+//import { dataProductsList } from '../../../general/Data';
 import { CreateElem } from '../../../general/CreateElem';
-import { IProduct } from '../../../types/interfaces';
+//import { IProduct } from '../../../types/interfaces';
 import { CreateCard } from './createCard';
+import { cart } from '../../../pages/start-page/modules/header';
 
 class MainBasket {
   main: HTMLElement;
@@ -12,7 +13,7 @@ class MainBasket {
   }
 
   renderItems() {
-    const objSection = new CreateElem('section', 'basket');
+    const objSection = new CreateElem('section', 'main-basket');
     this.main.append(objSection.getElement());
 
     const objDivNavigation = new CreateElem('div', 'basket-navigation');
@@ -32,9 +33,9 @@ class MainBasket {
     const objPages = new CreateElem('div', 'nav-element');
     objDivNavigation.appendElement(objPages.getElement());
     objPages.setInnerText('Page: ');
-    const objArrowLeft = new CreateElem('img', 'arrow-left');
+    objPages.setClassSelector('pages-count');
+    const objArrowLeft = new CreateElem('span', 'arrow-left');
     objPages.appendElement(objArrowLeft.getElement());
-    objArrowLeft.getElement().setAttribute('src', '../../assets/svg/arrow-left.svg');
     objArrowLeft.setClassSelector('arrow');
     const objPagesCount = new CreateElem('span', 'pages-count');
     objPages.appendElement(objPagesCount.getElement());
@@ -42,19 +43,22 @@ class MainBasket {
     const objArrowRight = new CreateElem('span', 'arrow-right');
     objPages.appendElement(objArrowRight.getElement());
     objArrowRight.setClassSelector('arrow');
-    this.renderCards(dataProductsList);
+    this.renderCards();
   }
   //Cоздаем див и рендерим туда такое количество контейнеров, сколько Item у нас в корзине
-  renderCards(data: IProduct[]) {
-    const objSection = document.querySelector('.basket') as HTMLElement;
-    const objItemList = new CreateCard(data[1]);
-    objItemList.render();
-    objItemList.renderItemBasketProps();
-    console.log(objItemList);
-    console.log(data[1]);
-    objSection.append(objItemList.container);
-
-    /*CardsWrapper.innerHTML = '';
+  renderCards() {
+    const objSection = document.querySelector('.main-basket') as HTMLElement;
+    //const cartItems = cart.currentCartProducts;
+    console.log(cart);
+    /*for (let i = 0; i < cartItems.length; i++) {
+      const objItemList = new CreateCard(cartItems[i]);
+      objItemList.render();
+      objItemList.renderItemBasketProps();
+      console.log(objItemList);
+      console.log(cartItems);
+      objSection.append(objItemList.container);
+    }*/
+    /*objSection.innerHTML = '';
     currentCards.splice(0, currentCards.length);
     for (let i = 0; i < data.length; i++) {
       const objCard = new CreateCard(data[i]);
@@ -94,4 +98,4 @@ class MainBasket {
   }
 }
 
-export default MainBasket;
+export { MainBasket };

@@ -16,6 +16,7 @@ class Main {
 
   render() {
     this.main.className = 'main';
+    this.main.setAttribute('id', 'main');
     const objAsideFilters = new CreateElem('aside', 'filters');
     this.main.append(objAsideFilters.getElement());
 

@@ -1,5 +1,6 @@
 import { CreateElem } from '../../../general/CreateElem';
 import { IProduct } from '../../../types/interfaces';
+//import { cart } from '../../../pages/start-page/modules/header';
 
 class CreateCard {
   product: IProduct;
@@ -12,6 +13,7 @@ class CreateCard {
   }
 
   render() {
+    //console.log(cart.currentCartProducts);
     const objItemImg = new CreateElem('img', 'item-image');
     this.container.append(objItemImg.getElement());
     objItemImg.getElement().setAttribute('src', `#`);
@@ -44,6 +46,7 @@ class CreateCard {
     const objItemInfo3 = new CreateElem('div', 'item-info');
     this.container.append(objItemInfo3.getElement());
     objItemInfo3.setInnerText(`Stock: #`);
+    objItemInfo3.setClassSelector('stock');
   }
 
   renderItemBasketProps() {

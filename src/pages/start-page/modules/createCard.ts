@@ -2,6 +2,7 @@
 import { CreateButton } from '../../../general/CreateButton';
 import { CreateElem } from '../../../general/CreateElem';
 import { IProduct } from '../../../types/interfaces';
+import locationResolver from '../../..';
 
 class CreateCard {
   product: IProduct;
@@ -66,10 +67,18 @@ class CreateCard {
     objBtnAdd.getElement().setAttribute('id', `${this.product.id}`);
     objCardBtnContainer.prependElement(objBtnAdd.getElement());
 
+    const detailsLink = new CreateElem('a', 'details-link');
+    objCardBtnContainer.appendElement(detailsLink.getElement());
+    detailsLink.getElement().setAttribute('href', '#/details');
+    detailsLink.getElement().setAttribute('data-href', '#/details');
     const objBtnDetails = new CreateButton('Details', 'btn-details');
     objBtnDetails.setClassSelector('button');
     objBtnDetails.getElement().setAttribute('id', `${this.product.id}`);
-    objCardBtnContainer.appendElement(objBtnDetails.getElement());
+    detailsLink.appendElement(objBtnDetails.getElement());
+
+    detailsLink.getElement().addEventListener('click', (e) => {
+      locationResolver('#/details');
+    });
   }
 
   delete() {

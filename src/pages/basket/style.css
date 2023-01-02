@@ -1,3 +1,9 @@
+button {
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
 .container {
   width: 100%;
 }
@@ -10,7 +16,7 @@
   margin: 0 auto;
 }
 
-.basket {
+.main-basket {
   width: 78%;
   display: flex;
   flex-direction: column;
@@ -24,6 +30,11 @@
   flex-direction: row;
   background-color: #D9D9D9;
   align-items: center;
+  margin-bottom: 15px;
+}
+
+.nav-element {
+  display: flex;
 }
 
 .nav-element:nth-child(1) {
@@ -34,23 +45,35 @@
   font-size: 1.5rem;
   font-weight: 500;
   padding-left: 10px;
+  padding-right: 10px;
 }
 
 .items-count {
   background-color: #B2AAAA;
-  padding: 5px 11px;
+  padding: 0 11px;
+  line-height: 1.8rem;
+}
+
+.pages-count {
+  display: flex;
+  flex-direction: row;
 }
 
 .arrow {
-  
-}
-
-.arrow-left {
   width: 17px;
   height: 24px;
-  color: black;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.arrow-left,
+.count-less {
   background-image: url('../../assets/svg/arrow-left.svg');
-  z-index: 2;
+}
+
+.arrow-right,
+.count-more {
+  background-image: url('../../assets/svg/arrow-right.svg');
 }
 
 .item-list {
@@ -59,6 +82,96 @@
   flex-direction: row;
 }
 
+.basket-item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 99%;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  margin: 0 auto;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.item-title {
+  color: #2264D1;
+}
+
+.item-number {
+  width: 25px;
+  height: 25px;
+  background-color: #F44336;
+  border-radius: 50%;
+  line-height: 25px;
+  text-align: center;
+}
+
+.item-info:last-child {
+  margin-right: 30px;
+}
+
+.item-count {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.stock {
+  margin-bottom: 40px;
+}
+
 .summary {
   width: 20%;
+  background-color: #D9D9D9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.summary p {
+  padding: 0;
+  margin: 0 0 7px 0;
+}
+
+.summary-title {
+  background-color: #BAB7B7;
+  height: 30px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: 1.5rem;
+}
+
+.summary-total {
+  margin-bottom: 14px;
+}
+
+.promocode {
+  margin-bottom: 7px;
+}
+
+.promocode::placeholder {
+  text-align: center;
+}
+
+.promo-helper {
+  font-size: 1rem;
+  text-align: center;
+  color: #FC1414;
+}
+
+.buy-button {
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  background-color: #FF7474;
+  cursor: pointer;
 }
