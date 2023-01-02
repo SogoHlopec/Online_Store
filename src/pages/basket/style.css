@@ -14,6 +14,7 @@ button {
   justify-content: space-between;
   flex-direction: row;
   margin: 0 auto;
+  margin-bottom: 40px;
 }
 
 .main-basket {
@@ -108,6 +109,19 @@ button {
   text-align: center;
 }
 
+.item-image {
+  width: 170px;
+  height: 100px;
+}
+
+.item-description {
+  text-align: center;
+}
+
+.item-about {
+  font-size: 1rem;
+}
+
 .item-info:last-child {
   margin-right: 30px;
 }
@@ -174,4 +188,10 @@ button {
   border-radius: 4px;
   background-color: #FF7474;
   cursor: pointer;
+}
+
+.non-active {
+  cursor: default;
+  pointer-events: none;        
+  text-decoration: none;
 }

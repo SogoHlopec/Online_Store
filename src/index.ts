@@ -26,13 +26,13 @@ const basket = new Basket();
 const locationResolver = (location: string) => {
   switch (location) {
     case '#/':
-      console.log('Main-page');
-      //StartPage.renderPage();
+      startPage.resetPage();
+      //container?.replaceChild(startPage.main, )
       break;
     case '#/basket':
       console.log('Basket-page');
-      basket.render();
-      basket.renderPage();
+      //basket.render();
+      //basket.renderPage();
       break;
     case '#/details':
       console.log('Details-page');
