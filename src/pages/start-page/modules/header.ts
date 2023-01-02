@@ -29,8 +29,8 @@ class Header {
     sum.className = 'sum';
     const basketLink = document.createElement('a');
     basketLink.className = 'basket-link';
-    basketLink.setAttribute('href', '#/basket/');
-    basketLink.setAttribute('data-href', '#/basket/');
+    basketLink.setAttribute('href', '#/basket');
+    basketLink.setAttribute('data-href', '#/basket');
     headerContainer.append(basketLink);
     const basket = document.createElement('div');
     basket.className = 'basket button';
