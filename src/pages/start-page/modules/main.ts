@@ -230,6 +230,8 @@ class Main {
       objCard.render();
       CardsWrapper.append(objCard.cardContainer);
     }
+    const FoundCount = document.querySelector('.found-count') as HTMLElement;
+    FoundCount.innerText = `${currentCards.length}`;
   }
 
   .addEventListener('click', (e) => {

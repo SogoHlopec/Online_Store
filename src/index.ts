@@ -9,7 +9,7 @@ import { Basket } from './pages/basket/index';
 
 const startPage = new StartPage();
 // const page404 = new Create404Page();
-const basket = new Basket();
+// const basket = new Basket();
 
 //startPage.run();
 startPage.renderPage();
