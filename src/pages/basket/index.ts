@@ -5,27 +5,24 @@ import { CreateButton } from '../../general/CreateButton';
 import { CreateCard } from '../start-page/modules/createCard';
 import { IProduct } from '../../types/interfaces';*/
 import { MainBasket } from './modules/main';
-import { Header } from '../start-page/modules/header';
-import { Footer } from '../start-page/modules/footer';
+import { StartPage } from '../start-page';
+import locationResolver from '../..';
 
 class Basket {
-  private body: HTMLElement;
   main;
-  header;
-  footer;
 
   constructor() {
-    this.body = document.body;
     this.main = new MainBasket();
-    this.header = Header;
-    this.footer = Footer;
   }
 
   render() {
-    const container = document.createElement('div');
-    container.className = 'container';
-    this.body.prepend(container);
-    container.append(this.main.main);
+    const container = document.querySelector('.container') as HTMLElement;
+    const mainPage = document.querySelector('.main') as HTMLElement;
+    const basketLink = document.querySelector('.basket-link') as HTMLElement;
+    //mainPage.innerHTML = '';
+    //container.append(this.main.main);
+    container.replaceChild(this.main.main, mainPage);
+    basketLink.classList.add('non-active');
   }
 
   renderPage() {

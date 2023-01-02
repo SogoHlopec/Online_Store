@@ -48,16 +48,13 @@ class MainBasket {
   //Cоздаем див и рендерим туда такое количество контейнеров, сколько Item у нас в корзине
   renderCards() {
     const objSection = document.querySelector('.main-basket') as HTMLElement;
-    //const cartItems = cart.currentCartProducts;
-    console.log(cart);
-    /*for (let i = 0; i < cartItems.length; i++) {
+    const cartItems = cart.currentCartProducts;
+    for (let i = 0; i < cartItems.length; i++) {
       const objItemList = new CreateCard(cartItems[i]);
       objItemList.render();
       objItemList.renderItemBasketProps();
-      console.log(objItemList);
-      console.log(cartItems);
       objSection.append(objItemList.container);
-    }*/
+    }
     /*objSection.innerHTML = '';
     currentCards.splice(0, currentCards.length);
     for (let i = 0; i < data.length; i++) {
