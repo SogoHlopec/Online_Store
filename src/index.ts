@@ -27,12 +27,16 @@ const locationResolver = (location: string) => {
   switch (location) {
     case '#/':
       startPage.resetPage();
-      //container?.replaceChild(startPage.main, )
       break;
     case '#/basket':
-      console.log('Basket-page');
-      //basket.render();
-      //basket.renderPage();
+      if (basket.main.main.querySelector('.main-basket')) {
+        basket.render();
+        basket.main.main.innerHTML = '';
+        basket.renderPage();
+      } else {
+        basket.render();
+        basket.renderPage();
+      }
       break;
     case '#/details':
       console.log('Details-page');
