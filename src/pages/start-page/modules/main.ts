@@ -231,10 +231,6 @@ class Main {
       CardsWrapper.append(objCard.cardContainer);
     }
   }
-
-  .addEventListener('click', (e) => {
-    locationResolver('#/basket');
-  });
 }
 
 export { Main, currentCards };

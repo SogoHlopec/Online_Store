@@ -52,7 +52,7 @@ class Header {
     });
 
     logoLink.addEventListener('click', (e) => {
-      locationResolver('/');
+      locationResolver('#/');
     });
   }
 }

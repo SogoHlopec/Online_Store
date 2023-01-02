@@ -2,6 +2,7 @@
 import { CreateButton } from '../../../general/CreateButton';
 import { CreateElem } from '../../../general/CreateElem';
 import { IProduct } from '../../../types/interfaces';
+import locationResolver from '../../..';
 
 class CreateCard {
   product: IProduct;
@@ -70,6 +71,10 @@ class CreateCard {
     objBtnDetails.setClassSelector('button');
     objBtnDetails.getElement().setAttribute('id', `${this.product.id}`);
     objCardBtnContainer.appendElement(objBtnDetails.getElement());
+
+    objBtnDetails.getElement().addEventListener('click', (e) => {
+      locationResolver('#/details');
+    });
   }
 
   delete() {

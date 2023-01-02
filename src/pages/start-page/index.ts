@@ -27,12 +27,12 @@ class StartPage {
     container.className = 'container';
     container.setAttribute('id', 'root');
     this.body.prepend(container);
-    container.prepend(this.header.header);
     container.append(this.main.main);
+    this.main.render();
+    container.prepend(this.header.header);
     container.append(this.footer.footer);
     this.header.render();
     this.footer.render();
-    this.main.render();
 
     // ! Events START!
     // ! add/delete product in Cart!
