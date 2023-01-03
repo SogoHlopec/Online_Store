@@ -7,8 +7,12 @@ import { Main } from './modules/main';
 import { cart } from './modules/header';
 import { Filters } from './modules/Filters';
 import { Basket } from '../basket/index';
+<<<<<<< HEAD
 import { Sort } from './modules/Sort';
 import { currentCards } from './modules/main';
+=======
+import { DetailsPage } from '../product-info';
+>>>>>>> 531709d (feat: add create details page start)
 //import { Create404Page } from '../page-404/index';
 
 class StartPage {
@@ -48,11 +52,25 @@ class StartPage {
     objFilters.eventChange();
     objFilters.eventButtonReset();
 
+<<<<<<< HEAD
     //Sort
     const sortOptions = document.querySelector('.sort-options') as HTMLFormElement;
     const sortCards = new Sort();
     sortOptions.addEventListener('change', () => {
       sortCards.sort(currentCards, sortOptions.value.split('-')[1], sortOptions.value.split('-')[0]);
+=======
+    // ! add even for details btn
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        if (target.classList.contains('btn-details')) {
+          const id = target.getAttribute('id') as string;
+          const detailsPage = new DetailsPage(id);
+          detailsPage.render();
+          console.log(id);
+        }
+      }
+>>>>>>> 531709d (feat: add create details page start)
     });
     // ! Events STOP!
   }

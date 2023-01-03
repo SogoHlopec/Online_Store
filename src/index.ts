@@ -1,5 +1,6 @@
 import { StartPage } from './pages/start-page/index';
 import { Basket } from './pages/basket/index';
+import { DetailsPage } from './pages/product-info';
 
 const startPage = new StartPage();
 const basket = new Basket();
@@ -20,7 +21,7 @@ const locationResolver = (location: string) => {
       }
       break;
     case '#/details':
-      console.log('Details-page');
+      // details.render();
       break;
   }
 };

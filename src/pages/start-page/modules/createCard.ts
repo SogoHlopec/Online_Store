@@ -71,14 +71,15 @@ class CreateCard {
     objCardBtnContainer.appendElement(detailsLink.getElement());
     detailsLink.getElement().setAttribute('href', '#/details');
     detailsLink.getElement().setAttribute('data-href', '#/details');
+    detailsLink.getElement().setAttribute('id', `${this.product.id}`);
     const objBtnDetails = new CreateButton('Details', 'btn-details');
     objBtnDetails.setClassSelector('button');
     objBtnDetails.getElement().setAttribute('id', `${this.product.id}`);
     detailsLink.appendElement(objBtnDetails.getElement());
 
-    detailsLink.getElement().addEventListener('click', (e) => {
-      locationResolver('#/details');
-    });
+    // detailsLink.getElement().addEventListener('click', (e) => {
+    //   locationResolver('#/details');
+    // });
   }
 
   delete() {
