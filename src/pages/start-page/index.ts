@@ -43,8 +43,7 @@ class StartPage {
 
     // ! add style for filters events!
     const objFilters = new Filters();
-    objFilters.eventChange('categories');
-    objFilters.eventChange('brands');
+    objFilters.eventChange();
     // ! Events STOP!
   }
 
