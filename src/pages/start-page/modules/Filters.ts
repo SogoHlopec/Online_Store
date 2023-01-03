@@ -6,24 +6,25 @@ import { IProduct } from '../../../types/interfaces';
 class Filters {
   catWrapper: HTMLElement | null;
   brandsWrapper: HTMLElement | null;
+  filters: HTMLElement | null;
   filteredProducts: IProduct[];
   selectedFilterCat: string[];
 
   constructor() {
     this.catWrapper = document.querySelector('.filter-cat-wrapper');
     this.brandsWrapper = document.querySelector('.filter-brand-wrapper');
+    this.filters = document.querySelector('.filters');
     this.filteredProducts = [];
     this.selectedFilterCat = [];
   }
 
   eventChange() {
-    if (this.catWrapper && this.brandsWrapper) {
+    if (this.catWrapper && this.brandsWrapper && this.filters) {
       const arrItemFilter = [
         ...this.catWrapper.querySelectorAll('.filter-item'),
         ...this.brandsWrapper.querySelectorAll('.filter-item'),
       ];
-      const filters = document.querySelector('.filters') as HTMLElement;
-      filters.addEventListener('change', () => {
+      this.filters.addEventListener('change', () => {
         for (let i = 0; i < arrItemFilter.length; i++) {
           const checkbox = arrItemFilter[i].querySelector('.filter-input') as HTMLInputElement | null;
           if (checkbox) {
@@ -37,7 +38,7 @@ class Filters {
         }
         this.renderNewCards(this.selectedFilterCat);
         this.renderCount();
-        if (filters.querySelectorAll('.filter-item-not-active').length === arrItemFilter.length) {
+        if (this.filters && this.filters.querySelectorAll('.filter-item-not-active').length === arrItemFilter.length) {
           for (let j = 0; j < arrItemFilter.length; j++) {
             arrItemFilter[j].classList.remove('filter-item-not-active');
             this.renderNewCards();
@@ -92,6 +93,24 @@ class Filters {
     if (currentCards.length === 0) {
       startPage.main.renderCards(dataProductsList);
       return;
+    }
+  }
+
+  eventButtonReset() {
+    if (this.filters && this.catWrapper && this.brandsWrapper) {
+      const arrItemFilter = [
+        ...this.catWrapper.querySelectorAll('.filter-item'),
+        ...this.brandsWrapper.querySelectorAll('.filter-item'),
+      ];
+      const btnReset = this.filters.querySelector('.btn-reset') as HTMLElement;
+      btnReset.addEventListener('click', () => {
+        for (let i = 0; i < arrItemFilter.length; i++) {
+          const checkbox = arrItemFilter[i].querySelector('.filter-input') as HTMLInputElement;
+          if (checkbox.checked) {
+            checkbox.click();
+          }
+        }
+      });
     }
   }
 }
