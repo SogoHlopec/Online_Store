@@ -18,17 +18,6 @@ class DetailsPage {
     container.replaceChild(objPage.main, mainPage);
     console.log(this.product);
   }
-
-  // eventClick(target: Element | null) {
-  //   if (target) {
-  //     if (target.classList.contains('btn-details')) {
-  //       const id = target.getAttribute('id') as string;
-  //       const detailsPage = new DetailsPage(id);
-  //       detailsPage.render();
-  //       // const detailsPage = new DetailsPage();
-  //     }
-  //   }
-  // }
 }
 
 export { DetailsPage };
