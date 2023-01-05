@@ -10,10 +10,10 @@ class CreateCard {
     this.product = product;
     this.container = document.createElement('div');
     this.container.className = 'basket-item';
+    this.container.setAttribute('id', `${this.product.id}`);
   }
 
   render() {
-    console.log(cart.currentCartProducts);
     const objItemImg = new CreateElem('img', 'item-image');
     this.container.append(objItemImg.getElement());
     objItemImg.getElement().setAttribute('src', `${this.product.thumbnail}`);
@@ -51,9 +51,9 @@ class CreateCard {
   }
 
   renderItemBasketProps() {
-    const objItemNum = new CreateElem('span', 'item-number');
+    const objItemNum = new CreateElem('div', 'item-number');
     this.container.prepend(objItemNum.getElement());
-    objItemNum.setInnerText(`${cart.currentCartProducts[1]}`);
+    objItemNum.setInnerText(`${cart.currentCartProducts.indexOf(this.product) + 1}`);
     const objItemInfo4 = new CreateElem('div', 'item-info');
     this.container.append(objItemInfo4.getElement());
     const objItemCount = new CreateElem('div', 'item-count');
@@ -61,7 +61,7 @@ class CreateCard {
     const objCountArrowLeft = new CreateElem('span', 'count-less');
     objItemCount.appendElement(objCountArrowLeft.getElement());
     objCountArrowLeft.setClassSelector('arrow');
-    const objCount = new CreateElem('span', 'count');
+    const objCount = new CreateElem('span', 'elem-count');
     objItemCount.appendElement(objCount.getElement());
     objCount.setInnerText('1');
     const objCountArrowRight = new CreateElem('span', 'count-more');
@@ -70,7 +70,7 @@ class CreateCard {
 
     const objPrice = new CreateElem('div', 'item-price');
     objItemInfo4.appendElement(objPrice.getElement());
-    objPrice.setInnerText('€800.00');
+    objPrice.setInnerText(`€${this.product.price}.00`);
   }
 }
 

@@ -4,10 +4,6 @@ button {
   text-decoration: none;
 }
 
-.container {
-  width: 100%;
-}
-
 .main {
   width: 96%;
   display: flex;
@@ -77,6 +73,11 @@ button {
   background-image: url('../../assets/svg/arrow-right.svg');
 }
 
+.arrow:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .item-list {
   display: flex;
   justify-content: space-between;
@@ -85,7 +86,7 @@ button {
 
 .basket-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: row;
   width: 99%;
   background-color: #FFFFFF;
@@ -94,6 +95,7 @@ button {
   align-items: center;
   font-size: 1.25rem;
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .item-title {
@@ -107,23 +109,33 @@ button {
   border-radius: 50%;
   line-height: 25px;
   text-align: center;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .item-image {
-  width: 170px;
+  width: 10%;
   height: 100px;
+  object-fit: contain;
 }
 
 .item-description {
+  width: 30%;
   text-align: center;
 }
 
 .item-about {
   font-size: 1rem;
+  overflow: hidden;
+}
+
+.item-info {
+  width: 13%;
 }
 
 .item-info:last-child {
   margin-right: 30px;
+  width: 8%;
 }
 
 .item-count {
@@ -133,12 +145,13 @@ button {
   margin-bottom: 10px;
 }
 
-.stock {
-  margin-bottom: 40px;
+.item-price {
+  text-align: center;
 }
 
 .summary {
   width: 20%;
+  height: 50vh;
   background-color: #D9D9D9;
   border-radius: 8px;
   display: flex;
@@ -170,7 +183,11 @@ button {
 }
 
 .promocode {
+  width: 219px;
+  height: 30px;
   margin-bottom: 7px;
+  outline: none;
+  border-style: none;
 }
 
 .promocode::placeholder {
@@ -184,10 +201,20 @@ button {
 }
 
 .buy-button {
+  width: 140px;
+  height: 25px;
   margin-bottom: 1.5rem;
   border-radius: 4px;
   background-color: #FF7474;
   cursor: pointer;
+  color: #2264D1;
+  text-align: center;
+}
+
+.buy-button:hover {
+  cursor: pointer;
+  filter: drop-shadow(0px 3px 4px rgb(163, 27, 34));
+  font-weight: 600;
 }
 
 .non-active {

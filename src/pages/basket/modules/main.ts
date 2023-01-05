@@ -28,7 +28,7 @@ class MainBasket {
     objItemsTotal.setInnerText('Items:  ');
     const objItemsCount = new CreateElem('span', 'items-count');
     objItemsTotal.appendElement(objItemsCount.getElement());
-    objItemsCount.setInnerText('5');
+    objItemsCount.setInnerText(`${cart.currentCartProducts.length}`);
 
     const objPages = new CreateElem('div', 'nav-element');
     objDivNavigation.appendElement(objPages.getElement());
@@ -45,7 +45,7 @@ class MainBasket {
     objArrowRight.setClassSelector('arrow');
     this.renderCards();
   }
-  //Cоздаем див и рендерим туда такое количество контейнеров, сколько Item у нас в корзине
+
   renderCards() {
     const objSection = document.querySelector('.main-basket') as HTMLElement;
     const cartItems = cart.currentCartProducts;
@@ -55,13 +55,6 @@ class MainBasket {
       objItemList.renderItemBasketProps();
       objSection.append(objItemList.container);
     }
-    /*objSection.innerHTML = '';
-    currentCards.splice(0, currentCards.length);
-    for (let i = 0; i < data.length; i++) {
-      const objCard = new CreateCard(data[i]);
-      currentCards.push(objCard);
-      objCard.render();
-      CardsWrapper.append(objCard.cardContainer);*/
   }
 
   renderSummary() {
@@ -74,11 +67,11 @@ class MainBasket {
 
     const objSummaryProducts = new CreateElem('p', 'summary-products');
     objSection.appendElement(objSummaryProducts.getElement());
-    objSummaryProducts.setInnerText(`Products: `);
+    objSummaryProducts.setInnerText(`Products: ${cart.currentCartProducts.length} `);
 
     const objSummaryTotal = new CreateElem('p', 'summary-total');
     objSection.appendElement(objSummaryTotal.getElement());
-    objSummaryTotal.setInnerText(`Total: €`);
+    objSummaryTotal.setInnerText(`Total: ${cart.elSumPrice.innerText} €`);
 
     const objPromo = new CreateElem('input', 'promocode');
     objPromo.getElement().setAttribute('type', 'search');
@@ -92,6 +85,57 @@ class MainBasket {
     const objBuyButton = new CreateElem('button', 'buy-button');
     objSection.appendElement(objBuyButton.getElement());
     objBuyButton.setInnerText('BUY NOW');
+  }
+
+  addItems() {
+    console.log(cart.currentCartProducts);
+    const addItemArrows = document.querySelectorAll('.count-more');
+    const sum = document.querySelector('.summary-total') as HTMLElement;
+    const itemsCount = document.querySelector('.items-count') as HTMLElement;
+    const summaryProducts = document.querySelector('.summary-products') as HTMLElement;
+    addItemArrows.forEach((elem) => {
+      elem.addEventListener('click', (e) => {
+        const item = elem.closest('.basket-item');
+        const itemCount = elem.previousSibling as HTMLElement;
+        cart.addProduct(Number(item?.id));
+        sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
+        itemCount.innerText = `${Number(itemCount.innerText) + 1} `;
+        itemsCount.innerText = `${cart.currentCartProducts.length}`;
+        summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
+      });
+    });
+    console.log(cart.currentCartProducts);
+  }
+
+  deleteItems() {
+    const deleteItemArrows = document.querySelectorAll('.count-less');
+    const sum = document.querySelector('.summary-total') as HTMLElement;
+    const itemsCount = document.querySelector('.items-count') as HTMLElement;
+    const summaryProducts = document.querySelector('.summary-products') as HTMLElement;
+    deleteItemArrows.forEach((elem) => {
+      elem.addEventListener('click', (e) => {
+        console.log(cart.currentCartProducts);
+        const item = elem.closest('.basket-item');
+        const itemCount = elem.nextSibling as HTMLElement;
+        cart.deleteProduct(Number(item?.id));
+        console.log(cart.elSumPrice);
+        itemCount.innerText = `${Number(itemCount.innerText) - 1} `;
+        itemsCount.innerText = `${cart.currentCartProducts.length}`;
+        summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
+        console.log(cart.elSumPrice);
+        //sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
+        /*if (itemCount.innerText === '0') {
+          console.log('0 элементов');
+        } else if (Number(itemCount.innerText) < 0) {
+          console.log('меньше 0 элементов');
+        } else {
+          itemCount.innerText = `${Number(itemCount.innerText) - 1} `;
+          itemsCount.innerText = `${cart.currentCartProducts.length}`;
+          summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
+          sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
+        }*/
+      });
+    });
   }
 }
 
