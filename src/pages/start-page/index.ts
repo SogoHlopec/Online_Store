@@ -7,6 +7,8 @@ import { Main } from './modules/main';
 import { cart } from './modules/header';
 import { Filters } from './modules/Filters';
 import { Basket } from '../basket/index';
+import { Sort } from './modules/Sort';
+import { currentCards } from './modules/main';
 //import { Create404Page } from '../page-404/index';
 
 class StartPage {
@@ -45,6 +47,13 @@ class StartPage {
     const objFilters = new Filters();
     objFilters.eventChange();
     objFilters.eventButtonReset();
+
+    //Sort
+    const sortOptions = document.querySelector('.sort-options') as HTMLFormElement;
+    const sortCards = new Sort();
+    sortOptions.addEventListener('change', () => {
+      sortCards.sort(currentCards, sortOptions.value.split('-')[1], sortOptions.value.split('-')[0]);
+    });
     // ! Events STOP!
   }
 
