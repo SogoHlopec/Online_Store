@@ -5,8 +5,8 @@ import { CreateButton } from '../../general/CreateButton';
 import { CreateCard } from '../start-page/modules/createCard';
 import { IProduct } from '../../types/interfaces';*/
 import { MainBasket } from './modules/main';
-import { StartPage } from '../start-page';
-import locationResolver from '../..';
+//import { StartPage } from '../start-page';
+//import locationResolver from '../..';
 
 class Basket {
   main;
@@ -28,6 +28,8 @@ class Basket {
   renderPage() {
     this.main.renderItems();
     this.main.renderSummary();
+    this.main.addItems();
+    this.main.deleteItems();
   }
 }
 
