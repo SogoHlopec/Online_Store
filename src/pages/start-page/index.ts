@@ -60,6 +60,7 @@ class StartPage {
       sortCards.sort(currentCards, sortOptions.value.split('-')[1], sortOptions.value.split('-')[0]);
 =======
     // ! add even for details btn
+    // ! add event for details btn
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement | null;
       if (target) {
@@ -71,6 +72,12 @@ class StartPage {
         }
       }
 >>>>>>> 531709d (feat: add create details page start)
+    });
+
+    // ! add event sort
+    const sort = document.querySelector('.sort-options') as HTMLFormElement;
+    sort.addEventListener('change', () => {
+      console.log(sort.value);
     });
     // ! Events STOP!
   }
