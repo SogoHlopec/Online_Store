@@ -1,6 +1,4 @@
 import { CreateCard } from './createCard';
-import { Main, currentCards } from './main';
-import { startPage } from '../../..';
 import { IProduct } from '../../../types/interfaces';
 
 class Sort {
@@ -12,34 +10,34 @@ class Sort {
 
   sort(arr: CreateCard[], value: string, rate: string) {
     this.container.innerHTML = '';
-    console.log(arr[1].product[`${rate}`]);
-
     switch (value) {
       case 'ASC':
-        arr.sort((a, b) => {
-          return a.product[`${rate}` as keyof IProduct] - b.product[rate as keyof IProduct];
-        });
+        if (rate === 'discount') {
+          arr.sort((a, b) => {
+            return +a.product.discountPercentage - +b.product.discountPercentage;
+          });
+        } else {
+          arr.sort((a, b) => {
+            return +a.product[rate as keyof IProduct] - +b.product[rate as keyof IProduct];
+          });
+        }
         this.drawCards(arr);
         break;
 
-      case 'price-DESC':
-        arr.sort((a, b) => {
-          return b.product.price - a.product.price;
-        });
+      case 'DESC':
+        if (rate === 'discount') {
+          arr.sort((a, b) => {
+            return b.product.discountPercentage - a.product.discountPercentage;
+          });
+        } else {
+          arr.sort((a, b) => {
+            return +b.product[rate as keyof IProduct] - +a.product[rate as keyof IProduct];
+          });
+        }
         this.drawCards(arr);
         break;
     }
   }
-
-  /* case 'rating-ASC':
-        break;
-      case 'rating-DESC':
-        break;
-      case 'discount-ASC':
-        break;
-      case 'discount-DESC':
-        break;
-    }*/
 
   drawCards(arr: CreateCard[]) {
     arr.forEach((elem) => {

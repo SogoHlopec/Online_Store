@@ -102,9 +102,9 @@ class MainBasket {
         itemCount.innerText = `${Number(itemCount.innerText) + 1} `;
         itemsCount.innerText = `${cart.currentCartProducts.length}`;
         summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
+        console.log(cart.currentCartProducts);
       });
     });
-    console.log(cart.currentCartProducts);
   }
 
   deleteItems() {
@@ -113,18 +113,39 @@ class MainBasket {
     const itemsCount = document.querySelector('.items-count') as HTMLElement;
     const summaryProducts = document.querySelector('.summary-products') as HTMLElement;
     deleteItemArrows.forEach((elem) => {
-      elem.addEventListener('click', (e) => {
-        console.log(cart.currentCartProducts);
-        const item = elem.closest('.basket-item');
+      elem.addEventListener('click', () => {
+        const item = elem.closest('.basket-item') as HTMLElement;
         const itemCount = elem.nextSibling as HTMLElement;
-        cart.deleteProduct(Number(item?.id));
-        console.log(cart.elSumPrice);
-        itemCount.innerText = `${Number(itemCount.innerText) - 1} `;
-        itemsCount.innerText = `${cart.currentCartProducts.length}`;
-        summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
-        console.log(cart.elSumPrice);
-        //sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
-        /*if (itemCount.innerText === '0') {
+        const index = cart.currentCartProducts;
+        let isValid = true;
+        for (let i = 0; isValid && i < index.length; i++) {
+          if (index[i].id === +item?.id && Number(itemCount.innerText) <= 1) {
+            const idx = index.map((el) => el.id).indexOf(+item?.id);
+            console.log(idx);
+            const result = index.splice(idx, 1);
+            console.log(index);
+            isValid = false;
+
+            itemCount.innerText = `${Number(itemCount.innerText) - 1} `;
+            itemsCount.innerText = `${cart.currentCartProducts.length}`;
+            summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
+
+            item.remove();
+            return index;
+          }
+        }
+      });
+
+      /*console.log(item?.id);
+          console.log(cart.currentCartProducts);
+          console.log(Array.from(deleteItemArrows).indexOf(elem));*/
+
+      /*console.log(cart.currentCartProducts);
+          console.log(Array.from(deleteItemArrows).indexOf(elem));*/
+
+      //console.log(cart.elSumPrice);
+      //sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
+      /*if (itemCount.innerText === '0') {
           console.log('0 элементов');
         } else if (Number(itemCount.innerText) < 0) {
           console.log('меньше 0 элементов');
@@ -134,7 +155,6 @@ class MainBasket {
           summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
           sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
         }*/
-      });
     });
   }
 }
