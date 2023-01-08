@@ -88,7 +88,6 @@ class MainBasket {
   }
 
   addItems() {
-    console.log(cart.currentCartProducts);
     const addItemArrows = document.querySelectorAll('.count-more');
     const sum = document.querySelector('.summary-total') as HTMLElement;
     const itemsCount = document.querySelector('.items-count') as HTMLElement;
@@ -102,7 +101,6 @@ class MainBasket {
         itemCount.innerText = `${Number(itemCount.innerText) + 1} `;
         itemsCount.innerText = `${cart.currentCartProducts.length}`;
         summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
-        console.log(cart.currentCartProducts);
       });
     });
   }
@@ -112,49 +110,45 @@ class MainBasket {
     const sum = document.querySelector('.summary-total') as HTMLElement;
     const itemsCount = document.querySelector('.items-count') as HTMLElement;
     const summaryProducts = document.querySelector('.summary-products') as HTMLElement;
+    const count = document.querySelector('.count') as HTMLElement;
     deleteItemArrows.forEach((elem) => {
       elem.addEventListener('click', () => {
         const item = elem.closest('.basket-item') as HTMLElement;
         const itemCount = elem.nextSibling as HTMLElement;
+        //const itemPrice =
         const index = cart.currentCartProducts;
         let isValid = true;
         for (let i = 0; isValid && i < index.length; i++) {
           if (index[i].id === +item?.id && Number(itemCount.innerText) <= 1) {
             const idx = index.map((el) => el.id).indexOf(+item?.id);
-            console.log(idx);
             const result = index.splice(idx, 1);
-            console.log(index);
+            isValid = false;
+            itemCount.innerText = `${Number(itemCount.innerText) - 1} `;
+            itemsCount.innerText = `${cart.currentCartProducts.length}`;
+            summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
+            cart.updateSumPrice();
+            cart.renderCounterAndPrice();
+            sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
+            console.log(cart.elSumPrice);
+            item.remove();
+            return index;
+          } else if (index[i].id === +item?.id) {
+            const idx = index.map((el) => el.id).indexOf(+item?.id);
+            const result = index.splice(idx, 1);
             isValid = false;
 
             itemCount.innerText = `${Number(itemCount.innerText) - 1} `;
             itemsCount.innerText = `${cart.currentCartProducts.length}`;
             summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
-
-            item.remove();
+            cart.updateSumPrice();
+            cart.renderCounterAndPrice();
+            console.log(count.innerText);
+            console.log(cart.currentCartProducts.length);
+            sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
             return index;
           }
         }
       });
-
-      /*console.log(item?.id);
-          console.log(cart.currentCartProducts);
-          console.log(Array.from(deleteItemArrows).indexOf(elem));*/
-
-      /*console.log(cart.currentCartProducts);
-          console.log(Array.from(deleteItemArrows).indexOf(elem));*/
-
-      //console.log(cart.elSumPrice);
-      //sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
-      /*if (itemCount.innerText === '0') {
-          console.log('0 элементов');
-        } else if (Number(itemCount.innerText) < 0) {
-          console.log('меньше 0 элементов');
-        } else {
-          itemCount.innerText = `${Number(itemCount.innerText) - 1} `;
-          itemsCount.innerText = `${cart.currentCartProducts.length}`;
-          summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
-          sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
-        }*/
     });
   }
 }
