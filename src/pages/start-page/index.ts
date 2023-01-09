@@ -1,16 +1,13 @@
 import '../../style.css';
 import './style.css';
-//import { dataProducts, dataProductsList } from '../../general/Data';
 import { Header } from './modules/header';
 import { Footer } from './modules/footer';
 import { Main } from './modules/main';
 import { cart } from './modules/header';
 import { Filters } from './modules/Filters';
-// import { Basket } from '../basket/index';
 import { Sort } from './modules/Sort';
 import { currentCards } from './modules/main';
 import { DetailsPage } from '../product-info';
-//import { Create404Page } from '../page-404/index';
 
 class StartPage {
   private body: HTMLElement;

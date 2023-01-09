@@ -47,7 +47,6 @@ class Cart {
 
   addProduct(id: number) {
     this.currentCartProducts.push(dataProductsList[id - 1]);
-    //this.count = this.currentCartProducts.length;
     this.updateSumPrice();
     this.renderCounterAndPrice();
   }
@@ -60,7 +59,6 @@ class Cart {
         this.currentCartProducts.splice(index, 1);
       }
     }
-    //this.count = this.currentCartProducts.length;
     this.updateSumPrice();
     this.renderCounterAndPrice();
   }
@@ -68,7 +66,6 @@ class Cart {
   eventClick(target: Element | null) {
     if (target) {
       if (target.classList.contains('btn-add')) {
-        console.log('click btn-add');
         if (target.classList.contains('btn-add-active')) {
           this.deleteProduct(Number(target.getAttribute('id')));
         } else {
