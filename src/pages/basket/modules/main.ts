@@ -167,12 +167,15 @@ class MainBasket {
   }
 
   promoCheck() {
+    //const promocodes = ['rs', 'epm'];
     const input = document.querySelector('.promocode') as HTMLInputElement,
       form = document.querySelector('.form') as HTMLElement;
-    //btnSubmitBtn =
-    form.onsubmit = function () {
-      const inputVal = input.value;
-      console.log(inputVal);
+
+    form.oninput = function () {
+      if (input.value.toLowerCase() === 'rs') {
+        //this.renderPromoAdditional();
+        console.log(input.value);
+      }
     };
   }
 }
