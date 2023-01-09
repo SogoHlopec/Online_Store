@@ -32,7 +32,7 @@ class Cart {
   renderCounterAndPrice() {
     this.count = this.currentCartProducts.length;
     this.elProdCounter.innerText = `${this.getCounter()}`;
-    this.elSumPrice.innerText = `${this.sumPrice.toFixed(2)}`;
+    this.elSumPrice.innerText = `€${this.sumPrice.toFixed(2)}`;
   }
 
   updateSumPrice() {
