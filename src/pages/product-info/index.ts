@@ -18,6 +18,18 @@ class DetailsPage {
     const mainPage = document.querySelector('.main') as HTMLElement;
     container.replaceChild(objPage.main, mainPage);
     console.log(this.product);
+
+    // ! Event on Slides
+    objPage.main.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        if (target.classList.contains('details-slide')) {
+          const thumbnail = document.querySelector('.details-thumbnail') as HTMLElement;
+          const src = target.getAttribute('src') as string;
+          thumbnail.setAttribute('src', `${src}`);
+        }
+      }
+    });
   }
 }
 
