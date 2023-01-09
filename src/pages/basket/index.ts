@@ -1,12 +1,5 @@
 import './style.css';
-/*import { dataProducts, dataProductsList } from '../../general/Data';
-import { CreateElem } from '../../general/CreateElem';
-import { CreateButton } from '../../general/CreateButton';
-import { CreateCard } from '../start-page/modules/createCard';
-import { IProduct } from '../../types/interfaces';*/
 import { MainBasket } from './modules/main';
-//import { StartPage } from '../start-page';
-//import locationResolver from '../..';
 
 class Basket {
   main;
@@ -27,12 +20,11 @@ class Basket {
   }
 
   renderPage() {
-    console.log('Я рендерю страницу корзины заново');
     this.main.renderItems();
     this.main.renderSummary();
     this.main.addItems();
     this.main.deleteItems();
-    this.main.promoCheck();
+    // this.main.promoCheck();
   }
 }
 

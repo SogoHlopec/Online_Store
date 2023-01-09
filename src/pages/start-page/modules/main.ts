@@ -232,7 +232,6 @@ class Main {
     }
     const FoundCount = document.querySelector('.found-count') as HTMLElement;
     FoundCount.innerText = `${currentCards.length}`;
-    console.log(currentCards);
   }
 }
 

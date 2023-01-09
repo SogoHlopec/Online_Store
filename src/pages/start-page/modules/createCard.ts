@@ -1,8 +1,6 @@
-// import { dataProducts, dataProductsList } from '../../../general/Data';
 import { CreateButton } from '../../../general/CreateButton';
 import { CreateElem } from '../../../general/CreateElem';
 import { IProduct } from '../../../types/interfaces';
-// import locationResolver from '../../..';
 
 class CreateCard {
   product: IProduct;
@@ -76,10 +74,6 @@ class CreateCard {
     objBtnDetails.setClassSelector('button');
     objBtnDetails.getElement().setAttribute('id', `${this.product.id}`);
     detailsLink.appendElement(objBtnDetails.getElement());
-
-    // detailsLink.getElement().addEventListener('click', () => {
-    //   locationResolver('#/details');
-    // });
   }
 
   delete() {

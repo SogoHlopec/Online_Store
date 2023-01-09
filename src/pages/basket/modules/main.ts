@@ -114,16 +114,11 @@ class MainBasket {
     const sum = document.querySelector('.summary-total') as HTMLElement;
     const itemsCount = document.querySelector('.items-count') as HTMLElement;
     const summaryProducts = document.querySelector('.summary-products') as HTMLElement;
-    //const count = document.querySelector('.count') as HTMLElement;
-    //const itemNumbers = document.querySelectorAll('.item-number');
-    const btnActive = document.querySelector('.btn-add-active') as HTMLElement;
-
     deleteItemArrows.forEach((elem) => {
       elem.addEventListener('click', () => {
         const item = elem.closest('.basket-item') as HTMLElement;
         const itemCount = elem.nextSibling as HTMLElement;
         const index = cart.currentCartProducts;
-        console.log(btnActive);
         let isValid = true;
         for (let i = 0; isValid && i < index.length; i++) {
           if (index[i].id === +item?.id && Number(itemCount.innerText) <= 1) {
@@ -135,12 +130,6 @@ class MainBasket {
             summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
             cart.updateSumPrice();
             cart.renderCounterAndPrice();
-            /*const arr = Array.from(itemNumbers);
-            console.log(arr);
-            arr.forEach((elem) => {
-              elem.innerText = `cart.currentCartProducts.indexOf(this.product) + 1`;
-              console.log(elem);
-            });*/
             sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
             item.remove();
             return index;
@@ -154,7 +143,6 @@ class MainBasket {
             cart.updateSumPrice();
             cart.renderCounterAndPrice();
             sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
-            console.log(cart.currentCartProducts);
             return index;
           }
         }
@@ -162,22 +150,22 @@ class MainBasket {
     });
   }
 
-  renderPromoAdditional() {
-    console.log('add btn');
-  }
+  // renderPromoAdditional() {
+  //   console.log('add btn');
+  // }
 
-  promoCheck() {
-    //const promocodes = ['rs', 'epm'];
-    const input = document.querySelector('.promocode') as HTMLInputElement,
-      form = document.querySelector('.form') as HTMLElement;
+  // promoCheck() {
+  //   //const promocodes = ['rs', 'epm'];
+  //   const input = document.querySelector('.promocode') as HTMLInputElement,
+  //     form = document.querySelector('.form') as HTMLElement;
 
-    form.oninput = function () {
-      if (input.value.toLowerCase() === 'rs') {
-        //this.renderPromoAdditional();
-        console.log(input.value);
-      }
-    };
-  }
+  //   form.oninput = function () {
+  //     if (input.value.toLowerCase() === 'rs') {
+  //       //this.renderPromoAdditional();
+  //       console.log(input.value);
+  //     }
+  //   };
+  // }
 }
 
 export { MainBasket };
