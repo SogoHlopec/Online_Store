@@ -1,3 +1,4 @@
+import './style.css';
 import { CreateDetailsPage } from './modules/createDetailsPage';
 import { dataProductsList } from '../../general/Data';
 import { IProduct } from '../../types/interfaces';

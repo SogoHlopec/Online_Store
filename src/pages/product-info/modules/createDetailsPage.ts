@@ -39,7 +39,7 @@ class CreateDetailsPage {
     objImageThumbnail.getElement().setAttribute('src', `${this.product.thumbnail}`);
     objImageAndPrice.appendElement(objImageThumbnail.getElement());
     const objPrice = new CreateElem('h3', 'details-price');
-    objPrice.setInnerText(`${this.product.price}`);
+    objPrice.setInnerText(`€${this.product.price}.00`);
     objImageAndPrice.appendElement(objPrice.getElement());
 
     const objInfo = new CreateElem('div', 'details-info');
@@ -49,6 +49,7 @@ class CreateDetailsPage {
 
     for (let i = 0; i < classes.length; i++) {
       const objDesc = new CreateElem('div', `info-${classes[i]}`);
+      objDesc.setClassSelector('info');
       objInfo.appendElement(objDesc.getElement());
       const obDescTitle = new CreateElem('h4', `info-${classes[i]}-title`);
       obDescTitle.setInnerText(`${classes[i][0].toUpperCase() + classes[i].slice(1)}`);
@@ -62,11 +63,15 @@ class CreateDetailsPage {
       objDesc.appendElement(obDescText.getElement());
     }
 
-    const objBtns = new CreateElem('div', 'details-btns');
+    const objBtns = new CreateElem('div', 'details-btns-wrapper');
     objInfo.appendElement(objBtns.getElement());
-    const objBtnBuy = new CreateButton('BUY NOW', 'btn-buy');
+    const objBtnBuy = new CreateButton('BUY NOW', 'details-btn-buy');
+    objBtnBuy.setClassSelector('details-btn');
+    objBtnBuy.setClassSelector('button');
     objBtns.appendElement(objBtnBuy.getElement());
-    const objBtnAdd = new CreateButton('Add to Cart', 'btn-add');
+    const objBtnAdd = new CreateButton('Add to Cart', 'details-btn-add');
+    objBtnAdd.setClassSelector('details-btn');
+    objBtnAdd.setClassSelector('button');
     objBtns.appendElement(objBtnAdd.getElement());
   }
 }
