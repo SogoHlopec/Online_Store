@@ -21,7 +21,6 @@ const locationResolver = (location: string) => {
       }
       break;
     case '#/details':
-      // details.render();
       break;
   }
 };

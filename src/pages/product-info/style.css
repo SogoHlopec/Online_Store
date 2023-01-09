@@ -1,4 +1,4 @@
-.main-details {
+.main {
   width: 79%;
   max-width: 1500px;
   margin: 0 auto;
@@ -89,4 +89,5 @@
   color: #2264d1;
   width: 140px;
   height: 55px;
+  font-size: 1.25rem;
 }

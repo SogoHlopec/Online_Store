@@ -17,7 +17,6 @@ class DetailsPage {
     const container = document.querySelector('.container') as HTMLElement;
     const mainPage = document.querySelector('.main') as HTMLElement;
     container.replaceChild(objPage.main, mainPage);
-    console.log(this.product);
 
     // ! Event on Slides
     objPage.main.addEventListener('click', (e) => {

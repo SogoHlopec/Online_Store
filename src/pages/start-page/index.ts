@@ -64,15 +64,8 @@ class StartPage {
           const id = target.getAttribute('id') as string;
           const detailsPage = new DetailsPage(id);
           detailsPage.render();
-          console.log(id);
         }
       }
-    });
-
-    // ! add event sort
-    const sort = document.querySelector('.sort-options') as HTMLFormElement;
-    sort.addEventListener('change', () => {
-      console.log(sort.value);
     });
     // ! Events STOP!
   }

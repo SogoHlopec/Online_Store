@@ -66,8 +66,9 @@ class Cart {
   }
 
   eventClick(target: Element | null) {
-    if (target)
+    if (target) {
       if (target.classList.contains('btn-add')) {
+        console.log('click btn-add');
         if (target.classList.contains('btn-add-active')) {
           this.deleteProduct(Number(target.getAttribute('id')));
         } else {
@@ -80,6 +81,7 @@ class Cart {
           target.textContent = 'Add to Cart';
         }
       }
+    }
   }
 }
 export { Cart };

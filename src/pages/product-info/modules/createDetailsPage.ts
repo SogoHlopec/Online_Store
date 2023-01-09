@@ -7,7 +7,7 @@ class CreateDetailsPage {
   product: IProduct;
 
   constructor(product: IProduct) {
-    this.main = new CreateElem('main', 'main-details').getElement();
+    this.main = new CreateElem('main', 'main').getElement();
     this.product = product;
   }
 
@@ -65,13 +65,15 @@ class CreateDetailsPage {
 
     const objBtns = new CreateElem('div', 'details-btns-wrapper');
     objInfo.appendElement(objBtns.getElement());
-    const objBtnBuy = new CreateButton('BUY NOW', 'details-btn-buy');
+    const objBtnBuy = new CreateButton('BUY NOW', 'btn-buy');
     objBtnBuy.setClassSelector('details-btn');
     objBtnBuy.setClassSelector('button');
     objBtns.appendElement(objBtnBuy.getElement());
-    const objBtnAdd = new CreateButton('Add to Cart', 'details-btn-add');
+
+    const objBtnAdd = new CreateButton('Add to Cart', 'btn-add');
     objBtnAdd.setClassSelector('details-btn');
     objBtnAdd.setClassSelector('button');
+    objBtnAdd.getElement().setAttribute('id', `${this.product.id}`);
     objBtns.appendElement(objBtnAdd.getElement());
   }
 }
