@@ -1,6 +1,4 @@
-//import { dataProductsList } from '../../../general/Data';
 import { CreateElem } from '../../../general/CreateElem';
-//import { IProduct } from '../../../types/interfaces';
 import { CreateCard } from './createCard';
 import { cart } from '../../../pages/start-page/modules/header';
 
@@ -73,17 +71,23 @@ class MainBasket {
     objSection.appendElement(objSummaryTotal.getElement());
     objSummaryTotal.setInnerText(`Total: ${cart.elSumPrice.innerText} €`);
 
+    const objForm = new CreateElem('form', 'form');
+    objForm.getElement().setAttribute('action', ' ');
+    objForm.getElement().setAttribute('novalidate', '');
+    objSection.appendElement(objForm.getElement());
+
     const objPromo = new CreateElem('input', 'promocode');
     objPromo.getElement().setAttribute('type', 'search');
     objPromo.getElement().setAttribute('placeholder', 'Enter promo code');
-    objSection.appendElement(objPromo.getElement());
+    objForm.appendElement(objPromo.getElement());
 
     const objPromoHelp = new CreateElem('p', 'promo-helper');
-    objSection.appendElement(objPromoHelp.getElement());
+    objForm.appendElement(objPromoHelp.getElement());
     objPromoHelp.setInnerText(`Promo for test ‘rs’, ‘epm’`);
 
     const objBuyButton = new CreateElem('button', 'buy-button');
-    objSection.appendElement(objBuyButton.getElement());
+    objBuyButton.getElement().setAttribute('type', 'submit');
+    objForm.appendElement(objBuyButton.getElement());
     objBuyButton.setInnerText('BUY NOW');
   }
 
@@ -93,7 +97,7 @@ class MainBasket {
     const itemsCount = document.querySelector('.items-count') as HTMLElement;
     const summaryProducts = document.querySelector('.summary-products') as HTMLElement;
     addItemArrows.forEach((elem) => {
-      elem.addEventListener('click', (e) => {
+      elem.addEventListener('click', () => {
         const item = elem.closest('.basket-item');
         const itemCount = elem.previousSibling as HTMLElement;
         cart.addProduct(Number(item?.id));
@@ -110,46 +114,66 @@ class MainBasket {
     const sum = document.querySelector('.summary-total') as HTMLElement;
     const itemsCount = document.querySelector('.items-count') as HTMLElement;
     const summaryProducts = document.querySelector('.summary-products') as HTMLElement;
-    const count = document.querySelector('.count') as HTMLElement;
+    //const count = document.querySelector('.count') as HTMLElement;
+    //const itemNumbers = document.querySelectorAll('.item-number');
+    const btnActive = document.querySelector('.btn-add-active') as HTMLElement;
+
     deleteItemArrows.forEach((elem) => {
       elem.addEventListener('click', () => {
         const item = elem.closest('.basket-item') as HTMLElement;
         const itemCount = elem.nextSibling as HTMLElement;
-        //const itemPrice =
         const index = cart.currentCartProducts;
+        console.log(btnActive);
         let isValid = true;
         for (let i = 0; isValid && i < index.length; i++) {
           if (index[i].id === +item?.id && Number(itemCount.innerText) <= 1) {
             const idx = index.map((el) => el.id).indexOf(+item?.id);
-            const result = index.splice(idx, 1);
+            index.splice(idx, 1);
             isValid = false;
             itemCount.innerText = `${Number(itemCount.innerText) - 1} `;
             itemsCount.innerText = `${cart.currentCartProducts.length}`;
             summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
             cart.updateSumPrice();
             cart.renderCounterAndPrice();
+            /*const arr = Array.from(itemNumbers);
+            console.log(arr);
+            arr.forEach((elem) => {
+              elem.innerText = `cart.currentCartProducts.indexOf(this.product) + 1`;
+              console.log(elem);
+            });*/
             sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
-            console.log(cart.elSumPrice);
             item.remove();
             return index;
           } else if (index[i].id === +item?.id) {
             const idx = index.map((el) => el.id).indexOf(+item?.id);
-            const result = index.splice(idx, 1);
+            index.splice(idx, 1);
             isValid = false;
-
             itemCount.innerText = `${Number(itemCount.innerText) - 1} `;
             itemsCount.innerText = `${cart.currentCartProducts.length}`;
             summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
             cart.updateSumPrice();
             cart.renderCounterAndPrice();
-            console.log(count.innerText);
-            console.log(cart.currentCartProducts.length);
             sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
+            console.log(cart.currentCartProducts);
             return index;
           }
         }
       });
     });
+  }
+
+  renderPromoAdditional() {
+    console.log('add btn');
+  }
+
+  promoCheck() {
+    const input = document.querySelector('.promocode') as HTMLInputElement,
+      form = document.querySelector('.form') as HTMLElement;
+    //btnSubmitBtn =
+    form.onsubmit = function () {
+      const inputVal = input.value;
+      console.log(inputVal);
+    };
   }
 }
 

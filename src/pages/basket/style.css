@@ -163,6 +163,7 @@ button {
 }
 
 .summary p {
+  height: 10%;
   padding: 0;
   margin: 0 0 7px 0;
 }
@@ -180,6 +181,14 @@ button {
 
 .summary-total {
   margin-bottom: 14px;
+}
+
+.form {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .promocode {

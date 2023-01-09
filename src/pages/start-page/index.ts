@@ -6,7 +6,7 @@ import { Footer } from './modules/footer';
 import { Main } from './modules/main';
 import { cart } from './modules/header';
 import { Filters } from './modules/Filters';
-import { Basket } from '../basket/index';
+//import { Basket } from '../basket/index';
 import { Sort } from './modules/Sort';
 import { currentCards } from './modules/main';
 //import { Create404Page } from '../page-404/index';

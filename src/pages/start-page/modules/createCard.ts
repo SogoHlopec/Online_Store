@@ -76,7 +76,7 @@ class CreateCard {
     objBtnDetails.getElement().setAttribute('id', `${this.product.id}`);
     detailsLink.appendElement(objBtnDetails.getElement());
 
-    detailsLink.getElement().addEventListener('click', (e) => {
+    detailsLink.getElement().addEventListener('click', () => {
       locationResolver('#/details');
     });
   }
