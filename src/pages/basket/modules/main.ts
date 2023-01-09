@@ -114,7 +114,6 @@ class MainBasket {
     const sum = document.querySelector('.summary-total') as HTMLElement;
     const itemsCount = document.querySelector('.items-count') as HTMLElement;
     const summaryProducts = document.querySelector('.summary-products') as HTMLElement;
-
     deleteItemArrows.forEach((elem) => {
       elem.addEventListener('click', () => {
         const item = elem.closest('.basket-item') as HTMLElement;
