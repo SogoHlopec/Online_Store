@@ -6,9 +6,10 @@ import { Footer } from './modules/footer';
 import { Main } from './modules/main';
 import { cart } from './modules/header';
 import { Filters } from './modules/Filters';
-//import { Basket } from '../basket/index';
+// import { Basket } from '../basket/index';
 import { Sort } from './modules/Sort';
 import { currentCards } from './modules/main';
+import { DetailsPage } from '../product-info';
 //import { Create404Page } from '../page-404/index';
 
 class StartPage {
@@ -48,18 +49,33 @@ class StartPage {
     objFilters.eventChange();
     objFilters.eventButtonReset();
 
-    //Sort
+    //! Sort
     const sortOptions = document.querySelector('.sort-options') as HTMLFormElement;
     const sortCards = new Sort();
     sortOptions.addEventListener('change', () => {
       sortCards.sort(currentCards, sortOptions.value.split('-')[1], sortOptions.value.split('-')[0]);
+    });
+
+    // ! add event for details btn
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        if (target.classList.contains('btn-details')) {
+          const id = target.getAttribute('id') as string;
+          const detailsPage = new DetailsPage(id);
+          detailsPage.render();
+        }
+      }
     });
     // ! Events STOP!
   }
 
   resetPage() {
     const container = document.querySelector('.container') as HTMLElement;
-    const main = document.querySelector('.main') as HTMLElement;
+    let main = document.querySelector('.main') as HTMLElement;
+    if (!main) {
+      main = document.querySelector('.main-details') as HTMLElement;
+    }
     const basketLink = document.querySelector('.basket-link') as HTMLElement;
     container.replaceChild(this.main.main, main);
     basketLink.classList.remove('non-active');

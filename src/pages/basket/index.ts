@@ -17,10 +17,11 @@ class Basket {
 
   render() {
     const container = document.querySelector('.container') as HTMLElement;
-    const mainPage = document.querySelector('.main') as HTMLElement;
+    let mainPage = document.querySelector('.main') as HTMLElement;
+    if (!mainPage) {
+      mainPage = document.querySelector('.main-details') as HTMLElement;
+    }
     const basketLink = document.querySelector('.basket-link') as HTMLElement;
-    //mainPage.innerHTML = '';
-    //container.append(this.main.main);
     container.replaceChild(this.main.main, mainPage);
     basketLink.classList.add('non-active');
   }
