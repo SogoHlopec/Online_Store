@@ -2,7 +2,7 @@
 import { CreateButton } from '../../../general/CreateButton';
 import { CreateElem } from '../../../general/CreateElem';
 import { IProduct } from '../../../types/interfaces';
-import locationResolver from '../../..';
+// import locationResolver from '../../..';
 
 class CreateCard {
   product: IProduct;
