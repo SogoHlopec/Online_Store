@@ -7,7 +7,7 @@ class CreateDetailsPage {
   product: IProduct;
 
   constructor(product: IProduct) {
-    this.main = new CreateElem('main', 'main').getElement();
+    this.main = new CreateElem('main', 'main-details').getElement();
     this.product = product;
   }
 

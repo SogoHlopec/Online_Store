@@ -72,7 +72,10 @@ class StartPage {
 
   resetPage() {
     const container = document.querySelector('.container') as HTMLElement;
-    const main = document.querySelector('.main') as HTMLElement;
+    let main = document.querySelector('.main') as HTMLElement;
+    if (!main) {
+      main = document.querySelector('.main-details') as HTMLElement;
+    }
     const basketLink = document.querySelector('.basket-link') as HTMLElement;
     container.replaceChild(this.main.main, main);
     basketLink.classList.remove('non-active');
