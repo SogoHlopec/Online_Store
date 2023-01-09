@@ -7,6 +7,8 @@ class Create404Page {
   }
 
   render() {
+    console.log('error 404');
+
     this.page404.innerText = 'PAGE NOT FOUND (404)';
     this.page404.className = 'title-404';
     const main = document.querySelector('.main');
