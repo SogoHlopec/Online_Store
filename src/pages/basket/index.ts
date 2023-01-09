@@ -27,10 +27,12 @@ class Basket {
   }
 
   renderPage() {
+    console.log('Я рендерю страницу корзины заново');
     this.main.renderItems();
     this.main.renderSummary();
     this.main.addItems();
     this.main.deleteItems();
+    this.main.promoCheck();
   }
 }
 

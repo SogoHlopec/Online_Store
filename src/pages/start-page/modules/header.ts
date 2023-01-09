@@ -47,11 +47,11 @@ class Header {
     basket.append(cart.getElProdCounter());
     cart.renderCounterAndPrice();
 
-    basketLink.addEventListener('click', (e) => {
+    basketLink.addEventListener('click', () => {
       locationResolver('#/basket');
     });
 
-    logoLink.addEventListener('click', (e) => {
+    logoLink.addEventListener('click', () => {
       locationResolver('#/');
     });
   }
