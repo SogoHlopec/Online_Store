@@ -37,6 +37,8 @@ class Filters {
             if (checkbox.checked && checkboxId) {
               if (arrCatItems.includes(arrItemFilter[i])) {
                 objQueryParams.setParamsFilters('category', `${checkboxId}`);
+              } else if (arrBrandsItems.includes(arrItemFilter[i])) {
+                objQueryParams.setParamsFilters('brand', `${checkboxId}`);
               }
               this.selectedFilter.push(checkboxId);
             }
@@ -44,13 +46,13 @@ class Filters {
         }
         this.renderNewCards(this.selectedFilter);
         this.renderCount();
-        if (this.filters && this.filters.querySelectorAll('.filter-item-not-active').length === arrItemFilter.length) {
-          for (let j = 0; j < arrItemFilter.length; j++) {
-            arrItemFilter[j].classList.remove('filter-item-not-active');
-            this.renderNewCards();
-          }
-          this.renderCount();
-        }
+        // if (this.filters && this.filters.querySelectorAll('.filter-item-not-active').length === arrItemFilter.length) {
+        //   for (let j = 0; j < arrItemFilter.length; j++) {
+        //     arrItemFilter[j].classList.remove('filter-item-not-active');
+        //     this.renderNewCards();
+        //   }
+        //   this.renderCount();
+        // }
       });
     }
   }
@@ -98,7 +100,13 @@ class Filters {
     this.selectedFilter.length = 0;
     if (currentCards.length === 0) {
       startPage.main.renderCards(dataProductsList);
-      return;
+      const objQueryParams = new QueryParams();
+      objQueryParams.sortParams();
+      // for (const key of objQueryParams.params.keys()) {
+      //   console.log('key');
+      //   console.log(key);
+      // }
+      // return;
     }
   }
 
