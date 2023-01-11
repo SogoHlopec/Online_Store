@@ -24,12 +24,13 @@ class Filters {
       const objQueryParams = new QueryParams();
       const arrCatItems = Array.from(this.catWrapper.querySelectorAll('.filter-item'));
       const arrBrandsItems = Array.from(this.brandsWrapper.querySelectorAll('.filter-item'));
-
       const arrItemFilter = [
         ...this.catWrapper.querySelectorAll('.filter-item'),
         ...this.brandsWrapper.querySelectorAll('.filter-item'),
       ];
       this.filters.addEventListener('change', () => {
+        objQueryParams.deleteParam('category');
+        objQueryParams.deleteParam('brand');
         for (let i = 0; i < arrItemFilter.length; i++) {
           const checkbox = arrItemFilter[i].querySelector('.filter-input') as HTMLInputElement | null;
           if (checkbox) {
@@ -46,13 +47,6 @@ class Filters {
         }
         this.renderNewCards(this.selectedFilter);
         this.renderCount();
-        // if (this.filters && this.filters.querySelectorAll('.filter-item-not-active').length === arrItemFilter.length) {
-        //   for (let j = 0; j < arrItemFilter.length; j++) {
-        //     arrItemFilter[j].classList.remove('filter-item-not-active');
-        //     this.renderNewCards();
-        //   }
-        //   this.renderCount();
-        // }
       });
     }
   }
@@ -102,11 +96,8 @@ class Filters {
       startPage.main.renderCards(dataProductsList);
       const objQueryParams = new QueryParams();
       objQueryParams.sortParams();
-      // for (const key of objQueryParams.params.keys()) {
-      //   console.log('key');
-      //   console.log(key);
-      // }
-      // return;
+      objQueryParams.deleteParam('category');
+      objQueryParams.deleteParam('brand');
     }
   }
 

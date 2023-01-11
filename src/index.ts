@@ -11,9 +11,6 @@ const basket = new Basket();
 
 const locationResolver = (location: string) => {
   switch (location) {
-    // case '#/':
-    //   startPage.resetPage();
-    //   break;
     case '#/basket':
       if (basket.main.main.querySelector('.main-basket')) {
         basket.render();
@@ -38,24 +35,10 @@ window.addEventListener('load', () => {
     locationResolver(location);
   } else if (location === '') {
     startPage.renderPage();
-
-    // console.log(window.location.href);
-    // const currentUrl = window.location.href;
-    // const url = new URL(currentUrl);
-    // const params = url.searchParams;
-    // params.set('filter', 'tops');
-    // console.log(params.toString());
-    // console.log(url.href);
-    // window.history.replaceState({}, '', url);
-    // if (params.toString().split('=')[1] === 'tops') {
-    //   const checkbox = document.getElementById('tops') as HTMLInputElement;
-    //   checkbox.click();
-    // }
-    // console.log(url);
-    // console.log(url.search.toString());
     const objQueryParams = new QueryParams();
     if (objQueryParams.params.toString()) {
       objQueryParams.sortParams();
+      objQueryParams.filtersParams();
     }
   }
 });

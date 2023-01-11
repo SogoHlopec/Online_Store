@@ -15,9 +15,15 @@ class QueryParams {
     window.history.replaceState({}, '', this.url);
   }
 
+  deleteParam(key: string) {
+    this.params.delete(key);
+    window.history.replaceState({}, '', this.url);
+  }
+
   setParamsFilters(key: string, value: string) {
     if (this.params.has(key)) {
       const arrValues = this.params.get(key)?.split('↕');
+      console.log(this.url);
       if (arrValues && !arrValues.includes(value)) {
         arrValues.push(value);
         this.params.set(key, arrValues.join('↕'));
@@ -39,6 +45,26 @@ class QueryParams {
         sortCards.sort(currentCards, sortOptions.value.split('-')[1], sortOptions.value.split('-')[0]);
       });
       elDiscount.click();
+    }
+  }
+
+  filtersParams() {
+    const arrParams = [];
+    if (this.params.has('category')) {
+      const arrCategories = this.params.get('category')?.split('↕');
+      if (arrCategories) {
+        arrParams.push(...arrCategories);
+      }
+    }
+    if (this.params.has('brand')) {
+      const arrCategories = this.params.get('brand')?.split('↕');
+      if (arrCategories) {
+        arrParams.push(...arrCategories);
+      }
+    }
+    for (let i = 0; i < arrParams.length; i++) {
+      const checkbox = document.getElementById(`${arrParams[i]}`);
+      if (checkbox) checkbox.click();
     }
   }
 }
