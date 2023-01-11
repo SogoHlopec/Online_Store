@@ -1,6 +1,9 @@
 import { StartPage } from './pages/start-page/index';
 import { Basket } from './pages/basket/index';
 // import { Create404Page } from './pages/page-404';
+// import { Sort } from './pages/start-page/modules/Sort';
+// import { currentCards } from './pages/start-page/modules/main';
+import { QueryParams } from './general/QueryParams';
 
 const startPage = new StartPage();
 const basket = new Basket();
@@ -8,9 +11,9 @@ const basket = new Basket();
 
 const locationResolver = (location: string) => {
   switch (location) {
-    case '#/':
-      startPage.resetPage();
-      break;
+    // case '#/':
+    //   startPage.resetPage();
+    //   break;
     case '#/basket':
       if (basket.main.main.querySelector('.main-basket')) {
         basket.render();
@@ -35,6 +38,25 @@ window.addEventListener('load', () => {
     locationResolver(location);
   } else if (location === '') {
     startPage.renderPage();
+
+    // console.log(window.location.href);
+    // const currentUrl = window.location.href;
+    // const url = new URL(currentUrl);
+    // const params = url.searchParams;
+    // params.set('filter', 'tops');
+    // console.log(params.toString());
+    // console.log(url.href);
+    // window.history.replaceState({}, '', url);
+    // if (params.toString().split('=')[1] === 'tops') {
+    //   const checkbox = document.getElementById('tops') as HTMLInputElement;
+    //   checkbox.click();
+    // }
+    // console.log(url);
+    // console.log(url.search.toString());
+    const objQueryParams = new QueryParams();
+    if (objQueryParams.params.toString()) {
+      objQueryParams.sortParams();
+    }
   }
 });
 
