@@ -124,10 +124,13 @@ class Filters {
 
   eventButtonCopyLink() {
     if (this.filters && this.catWrapper && this.brandsWrapper) {
-      const btnCopy = this.filters.querySelector('.btn-reset') as HTMLElement;
-
+      const btnCopy = this.filters.querySelector('.btn-copy-link') as HTMLElement;
       btnCopy.addEventListener('click', () => {
-        navigator.clipboard.writeText('Hello Alligator!');
+        navigator.clipboard.writeText(`${window.location.href}`);
+        btnCopy.innerText = 'Copied!';
+        setTimeout(() => {
+          btnCopy.innerText = 'Copy Link';
+        }, 1000);
       });
     }
   }

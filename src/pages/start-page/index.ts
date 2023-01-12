@@ -47,6 +47,7 @@ class StartPage {
     const objFilters = new Filters();
     objFilters.eventChange();
     objFilters.eventButtonReset();
+    objFilters.eventButtonCopyLink();
 
     //! Sort
     const sortOptions = document.querySelector('.sort-options') as HTMLFormElement;
@@ -90,10 +91,8 @@ class StartPage {
         }
       }
     });
-
     // ! Events STOP!
   }
-
   resetPage() {
     const container = document.querySelector('.container') as HTMLElement;
     let main = document.querySelector('.main') as HTMLElement;
