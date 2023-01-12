@@ -209,6 +209,7 @@ class Main {
 
     const objBtnCards = new CreateButton('Cards', 'btn-cards');
     objBtnCards.setClassSelector('button');
+    objBtnCards.setClassSelector('btn-cards-active');
     objSearchBtnContainer.appendElement(objBtnCards.getElement());
 
     const objCardsContainer = new CreateElem('div', 'cards-container');
@@ -232,7 +233,6 @@ class Main {
     }
     const FoundCount = document.querySelector('.found-count') as HTMLElement;
     FoundCount.innerText = `${currentCards.length}`;
-    console.log(currentCards);
   }
 }
 

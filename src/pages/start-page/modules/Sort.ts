@@ -1,5 +1,6 @@
 import { CreateCard } from './createCard';
 import { IProduct } from '../../../types/interfaces';
+import { QueryParams } from '../../../general/QueryParams';
 
 class Sort {
   container: HTMLElement;
@@ -9,9 +10,11 @@ class Sort {
   }
 
   sort(arr: CreateCard[], value: string, rate: string) {
+    const objQueryParams = new QueryParams();
     this.container.innerHTML = '';
     switch (value) {
       case 'ASC':
+        objQueryParams.setParams('sort', `${rate}-ASC`);
         if (rate === 'discount') {
           arr.sort((a, b) => {
             return +a.product.discountPercentage - +b.product.discountPercentage;
@@ -25,6 +28,7 @@ class Sort {
         break;
 
       case 'DESC':
+        objQueryParams.setParams('sort', `${rate}-DESC`);
         if (rate === 'discount') {
           arr.sort((a, b) => {
             return b.product.discountPercentage - a.product.discountPercentage;
@@ -46,4 +50,5 @@ class Sort {
   }
 }
 
-export { Sort };
+const sortCards = new Sort();
+export { Sort, sortCards };
