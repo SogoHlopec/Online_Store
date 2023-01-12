@@ -92,13 +92,15 @@ class Filters {
       }
     }
     startPage.main.renderCards(this.filteredProducts);
+    const objQueryParams = new QueryParams();
+    objQueryParams.typeCardsParams();
     this.selectedFilter.length = 0;
     if (currentCards.length === 0) {
       startPage.main.renderCards(dataProductsList);
-      const objQueryParams = new QueryParams();
       objQueryParams.sortParams();
       objQueryParams.deleteParam('category');
       objQueryParams.deleteParam('brand');
+      objQueryParams.typeCardsParams();
     }
   }
 

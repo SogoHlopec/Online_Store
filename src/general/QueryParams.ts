@@ -1,5 +1,6 @@
 import { currentCards } from '../pages/start-page/modules/main';
 import { Sort } from '../pages/start-page/modules/Sort';
+import { TypeCards } from '../pages/start-page/modules/TypeCards';
 
 class QueryParams {
   url: URL;
@@ -65,6 +66,13 @@ class QueryParams {
     for (let i = 0; i < arrParams.length; i++) {
       const checkbox = document.getElementById(`${arrParams[i]}`);
       if (checkbox) checkbox.click();
+    }
+  }
+
+  typeCardsParams() {
+    if (this.params.has('type')) {
+      const objTypeCards = new TypeCards();
+      objTypeCards.typeList();
     }
   }
 }

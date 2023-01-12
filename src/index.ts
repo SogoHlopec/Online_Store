@@ -39,6 +39,7 @@ window.addEventListener('load', () => {
     if (objQueryParams.params.toString()) {
       objQueryParams.sortParams();
       objQueryParams.filtersParams();
+      objQueryParams.typeCardsParams();
     }
   }
 });
