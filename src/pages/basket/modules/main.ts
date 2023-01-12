@@ -1,0 +1,171 @@
+import { CreateElem } from '../../../general/CreateElem';
+import { CreateCard } from './createCard';
+import { cart } from '../../../pages/start-page/modules/header';
+
+class MainBasket {
+  main: HTMLElement;
+
+  constructor() {
+    this.main = document.createElement('main');
+    this.main.className = 'main';
+  }
+
+  renderItems() {
+    const objSection = new CreateElem('section', 'main-basket');
+    this.main.append(objSection.getElement());
+
+    const objDivNavigation = new CreateElem('div', 'basket-navigation');
+    objSection.prependElement(objDivNavigation.getElement());
+
+    const objProductsInCart = new CreateElem('div', 'nav-element');
+    objDivNavigation.prependElement(objProductsInCart.getElement());
+    objProductsInCart.setInnerText('Products in Cart');
+
+    const objItemsTotal = new CreateElem('div', 'nav-element');
+    objDivNavigation.appendElement(objItemsTotal.getElement());
+    objItemsTotal.setInnerText('Items:  ');
+    const objItemsCount = new CreateElem('span', 'items-count');
+    objItemsTotal.appendElement(objItemsCount.getElement());
+    objItemsCount.setInnerText(`${cart.currentCartProducts.length}`);
+
+    const objPages = new CreateElem('div', 'nav-element');
+    objDivNavigation.appendElement(objPages.getElement());
+    objPages.setInnerText('Page: ');
+    objPages.setClassSelector('pages-count');
+    const objArrowLeft = new CreateElem('span', 'arrow-left');
+    objPages.appendElement(objArrowLeft.getElement());
+    objArrowLeft.setClassSelector('arrow');
+    const objPagesCount = new CreateElem('span', 'pages-count');
+    objPages.appendElement(objPagesCount.getElement());
+    objPagesCount.setInnerText('1');
+    const objArrowRight = new CreateElem('span', 'arrow-right');
+    objPages.appendElement(objArrowRight.getElement());
+    objArrowRight.setClassSelector('arrow');
+    this.renderCards();
+  }
+
+  renderCards() {
+    const objSection = document.querySelector('.main-basket') as HTMLElement;
+    const cartItems = cart.currentCartProducts;
+    for (let i = 0; i < cartItems.length; i++) {
+      const objItemList = new CreateCard(cartItems[i]);
+      objItemList.render();
+      objItemList.renderItemBasketProps();
+      objSection.append(objItemList.container);
+    }
+  }
+
+  renderSummary() {
+    const objSection = new CreateElem('section', 'summary');
+    this.main.append(objSection.getElement());
+
+    const objSummaryTitle = new CreateElem('p', 'summary-title');
+    objSection.prependElement(objSummaryTitle.getElement());
+    objSummaryTitle.setInnerText('Summary');
+
+    const objSummaryProducts = new CreateElem('p', 'summary-products');
+    objSection.appendElement(objSummaryProducts.getElement());
+    objSummaryProducts.setInnerText(`Products: ${cart.currentCartProducts.length} `);
+
+    const objSummaryTotal = new CreateElem('p', 'summary-total');
+    objSection.appendElement(objSummaryTotal.getElement());
+    objSummaryTotal.setInnerText(`Total: ${cart.elSumPrice.innerText} €`);
+
+    const objForm = new CreateElem('form', 'form');
+    objForm.getElement().setAttribute('action', ' ');
+    objForm.getElement().setAttribute('novalidate', '');
+    objSection.appendElement(objForm.getElement());
+
+    const objPromo = new CreateElem('input', 'promocode');
+    objPromo.getElement().setAttribute('type', 'search');
+    objPromo.getElement().setAttribute('placeholder', 'Enter promo code');
+    objForm.appendElement(objPromo.getElement());
+
+    const objPromoHelp = new CreateElem('p', 'promo-helper');
+    objForm.appendElement(objPromoHelp.getElement());
+    objPromoHelp.setInnerText(`Promo for test ‘rs’, ‘epm’`);
+
+    const objBuyButton = new CreateElem('button', 'buy-button');
+    objBuyButton.getElement().setAttribute('type', 'submit');
+    objForm.appendElement(objBuyButton.getElement());
+    objBuyButton.setInnerText('BUY NOW');
+  }
+
+  addItems() {
+    const addItemArrows = document.querySelectorAll('.count-more');
+    const sum = document.querySelector('.summary-total') as HTMLElement;
+    const itemsCount = document.querySelector('.items-count') as HTMLElement;
+    const summaryProducts = document.querySelector('.summary-products') as HTMLElement;
+    addItemArrows.forEach((elem) => {
+      elem.addEventListener('click', () => {
+        const item = elem.closest('.basket-item');
+        const itemCount = elem.previousSibling as HTMLElement;
+        cart.addProduct(Number(item?.id));
+        sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
+        itemCount.innerText = `${Number(itemCount.innerText) + 1} `;
+        itemsCount.innerText = `${cart.currentCartProducts.length}`;
+        summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
+      });
+    });
+  }
+
+  deleteItems() {
+    const deleteItemArrows = document.querySelectorAll('.count-less');
+    const sum = document.querySelector('.summary-total') as HTMLElement;
+    const itemsCount = document.querySelector('.items-count') as HTMLElement;
+    const summaryProducts = document.querySelector('.summary-products') as HTMLElement;
+    deleteItemArrows.forEach((elem) => {
+      elem.addEventListener('click', () => {
+        const item = elem.closest('.basket-item') as HTMLElement;
+        const itemCount = elem.nextSibling as HTMLElement;
+        const index = cart.currentCartProducts;
+        let isValid = true;
+        for (let i = 0; isValid && i < index.length; i++) {
+          if (index[i].id === +item?.id && Number(itemCount.innerText) <= 1) {
+            const idx = index.map((el) => el.id).indexOf(+item?.id);
+            index.splice(idx, 1);
+            isValid = false;
+            itemCount.innerText = `${Number(itemCount.innerText) - 1} `;
+            itemsCount.innerText = `${cart.currentCartProducts.length}`;
+            summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
+            cart.updateSumPrice();
+            cart.renderCounterAndPrice();
+            sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
+            item.remove();
+            return index;
+          } else if (index[i].id === +item?.id) {
+            const idx = index.map((el) => el.id).indexOf(+item?.id);
+            index.splice(idx, 1);
+            isValid = false;
+            itemCount.innerText = `${Number(itemCount.innerText) - 1} `;
+            itemsCount.innerText = `${cart.currentCartProducts.length}`;
+            summaryProducts.innerText = `Products: ${cart.currentCartProducts.length} `;
+            cart.updateSumPrice();
+            cart.renderCounterAndPrice();
+            sum.innerText = `Total: ${cart.elSumPrice.innerText} €`;
+            return index;
+          }
+        }
+      });
+    });
+  }
+
+  // renderPromoAdditional() {
+  //   console.log('add btn');
+  // }
+
+  // promoCheck() {
+  //   //const promocodes = ['rs', 'epm'];
+  //   const input = document.querySelector('.promocode') as HTMLInputElement,
+  //     form = document.querySelector('.form') as HTMLElement;
+
+  //   form.oninput = function () {
+  //     if (input.value.toLowerCase() === 'rs') {
+  //       //this.renderPromoAdditional();
+  //       console.log(input.value);
+  //     }
+  //   };
+  // }
+}
+
+export { MainBasket };
