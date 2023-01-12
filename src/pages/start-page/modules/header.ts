@@ -16,7 +16,7 @@ class Header {
     headerContainer.className = 'header-container';
     const logoLink = new CreateElem('a', 'logo-link').getElement();
     headerContainer.prepend(logoLink);
-    logoLink.setAttribute('href', '/');
+    logoLink.setAttribute('href', '#/');
     const logo = document.createElement('div');
     logo.className = 'logo';
     logoLink.prepend(logo);
@@ -52,7 +52,7 @@ class Header {
     });
 
     logoLink.addEventListener('click', () => {
-      locationResolver('/');
+      locationResolver('#/');
     });
   }
 }

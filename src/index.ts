@@ -12,6 +12,9 @@ const basket = new Basket();
 const locationResolver = (location: string) => {
   const objQueryParams = new QueryParams();
   switch (location) {
+    case '#/':
+      startPage.resetPage();
+      break;
     case '#/basket':
       objQueryParams.url.search = '';
       window.history.replaceState({}, '', objQueryParams.url);
