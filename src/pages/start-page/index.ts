@@ -8,6 +8,8 @@ import { Filters } from './modules/Filters';
 import { Sort } from './modules/Sort';
 import { currentCards } from './modules/main';
 import { DetailsPage } from '../product-info';
+import { TypeCards } from './modules/TypeCards';
+import { QueryParams } from '../../general/QueryParams';
 
 class StartPage {
   private body: HTMLElement;
@@ -45,6 +47,7 @@ class StartPage {
     const objFilters = new Filters();
     objFilters.eventChange();
     objFilters.eventButtonReset();
+    objFilters.eventButtonCopyLink();
 
     //! Sort
     const sortOptions = document.querySelector('.sort-options') as HTMLFormElement;
@@ -61,12 +64,35 @@ class StartPage {
           const id = target.getAttribute('id') as string;
           const detailsPage = new DetailsPage(id);
           detailsPage.render();
+          const objQueryParams = new QueryParams();
+          objQueryParams.url.search = '';
+          window.history.replaceState({}, '', objQueryParams.url);
+        }
+      }
+    });
+    // ! add event for btn List
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        if (target.classList.contains('btn-list')) {
+          const objTypeCards = new TypeCards();
+          objTypeCards.typeList();
+        }
+      }
+    });
+
+    // ! add event for btn Cards
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        if (target.classList.contains('btn-cards')) {
+          const objTypeCards = new TypeCards();
+          objTypeCards.typeCards();
         }
       }
     });
     // ! Events STOP!
   }
-
   resetPage() {
     const container = document.querySelector('.container') as HTMLElement;
     let main = document.querySelector('.main') as HTMLElement;

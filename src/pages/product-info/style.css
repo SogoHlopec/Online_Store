@@ -25,6 +25,7 @@
   min-height: 590px;
   justify-content: space-around;
   margin-bottom: 18px;
+  gap: 10px;
 }
 
 .details-slides {
