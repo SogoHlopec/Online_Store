@@ -9,6 +9,7 @@ import { Sort } from './modules/Sort';
 import { currentCards } from './modules/main';
 import { DetailsPage } from '../product-info';
 import { TypeCards } from './modules/TypeCards';
+import { QueryParams } from '../../general/QueryParams';
 
 class StartPage {
   private body: HTMLElement;
@@ -62,6 +63,9 @@ class StartPage {
           const id = target.getAttribute('id') as string;
           const detailsPage = new DetailsPage(id);
           detailsPage.render();
+          const objQueryParams = new QueryParams();
+          objQueryParams.url.search = '';
+          window.history.replaceState({}, '', objQueryParams.url);
         }
       }
     });

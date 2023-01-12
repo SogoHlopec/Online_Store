@@ -10,8 +10,11 @@ const basket = new Basket();
 // const page404 = new Create404Page();
 
 const locationResolver = (location: string) => {
+  const objQueryParams = new QueryParams();
   switch (location) {
     case '#/basket':
+      objQueryParams.url.search = '';
+      window.history.replaceState({}, '', objQueryParams.url);
       if (basket.main.main.querySelector('.main-basket')) {
         basket.render();
         basket.main.main.innerHTML = '';

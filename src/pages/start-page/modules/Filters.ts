@@ -121,5 +121,15 @@ class Filters {
       });
     }
   }
+
+  eventButtonCopyLink() {
+    if (this.filters && this.catWrapper && this.brandsWrapper) {
+      const btnCopy = this.filters.querySelector('.btn-reset') as HTMLElement;
+
+      btnCopy.addEventListener('click', () => {
+        navigator.clipboard.writeText('Hello Alligator!');
+      });
+    }
+  }
 }
 export { Filters };
