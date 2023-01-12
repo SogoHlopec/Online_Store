@@ -86,7 +86,7 @@ class MainBasket {
     objPromoHelp.setInnerText(`Promo for test ‘rs’, ‘epm’`);
 
     const objBuyButton = new CreateElem('button', 'buy-button');
-    objBuyButton.getElement().setAttribute('type', 'submit');
+    //objBuyButton.getElement().setAttribute('type', 'submit');
     objForm.appendElement(objBuyButton.getElement());
     objBuyButton.setInnerText('BUY NOW');
   }
@@ -171,12 +171,13 @@ class MainBasket {
     const input = document.querySelector('.promocode') as HTMLInputElement,
       form = document.querySelector('.form') as HTMLElement;
 
-    form.oninput = function () {
+    form.addEventListener('oninput', function () {
       if (input.value.toLowerCase() === 'rs') {
         //this.renderPromoAdditional();
         console.log(input.value);
+        return false;
       }
-    };
+    });
   }
 }
 
