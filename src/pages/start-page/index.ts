@@ -8,6 +8,7 @@ import { Filters } from './modules/Filters';
 import { Sort } from './modules/Sort';
 import { currentCards } from './modules/main';
 import { DetailsPage } from '../product-info';
+import { TypeCards } from './modules/TypeCards';
 
 class StartPage {
   private body: HTMLElement;
@@ -64,6 +65,28 @@ class StartPage {
         }
       }
     });
+    // ! add event for btn List
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        if (target.classList.contains('btn-list')) {
+          const objTypeCards = new TypeCards();
+          objTypeCards.typeList();
+        }
+      }
+    });
+
+    // ! add event for btn Cards
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        if (target.classList.contains('btn-cards')) {
+          const objTypeCards = new TypeCards();
+          objTypeCards.typeCards();
+        }
+      }
+    });
+
     // ! Events STOP!
   }
 

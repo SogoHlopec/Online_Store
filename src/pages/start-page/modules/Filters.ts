@@ -21,7 +21,6 @@ class Filters {
 
   eventChange() {
     if (this.catWrapper && this.brandsWrapper && this.filters) {
-      const objQueryParams = new QueryParams();
       const arrCatItems = Array.from(this.catWrapper.querySelectorAll('.filter-item'));
       const arrBrandsItems = Array.from(this.brandsWrapper.querySelectorAll('.filter-item'));
       const arrItemFilter = [
@@ -29,6 +28,7 @@ class Filters {
         ...this.brandsWrapper.querySelectorAll('.filter-item'),
       ];
       this.filters.addEventListener('change', () => {
+        const objQueryParams = new QueryParams();
         objQueryParams.deleteParam('category');
         objQueryParams.deleteParam('brand');
         for (let i = 0; i < arrItemFilter.length; i++) {
@@ -47,6 +47,7 @@ class Filters {
         }
         this.renderNewCards(this.selectedFilter);
         this.renderCount();
+        objQueryParams.sortParams();
       });
     }
   }
