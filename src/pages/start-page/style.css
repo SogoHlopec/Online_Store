@@ -287,6 +287,16 @@
   width: 15%;
 }
 
+.btn-list:active,
+.btn-cards:active {
+  filter: drop-shadow(0px 3px 4px rgba(69, 209, 34, 0.9));
+}
+
+.btn-list-active,
+.btn-cards-active {
+  filter: drop-shadow(0px 3px 4px rgba(69, 209, 34, 0.9));
+}
+
 .btn-cards {
   width: 15%;
 }

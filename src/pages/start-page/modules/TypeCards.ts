@@ -11,6 +11,12 @@ class TypeCards {
     if (this.cardWrapper) {
       this.cardWrapper.classList.add('cards-wrapper-list');
 
+      const btnList = document.querySelector('.btn-list');
+      btnList?.classList.add('btn-list-active');
+
+      const btnCards = document.querySelector('.btn-cards');
+      btnCards?.classList.remove('btn-cards-active');
+
       const elementsCardImg = this.cardWrapper.querySelectorAll('.card-img');
       elementsCardImg.forEach((element) => {
         element.classList.add('card-img-list');
@@ -33,6 +39,12 @@ class TypeCards {
   typeCards() {
     if (this.cardWrapper) {
       this.cardWrapper.classList.remove('cards-wrapper-list');
+
+      const btnCards = document.querySelector('.btn-cards');
+      btnCards?.classList.add('btn-cards-active');
+
+      const btnList = document.querySelector('.btn-list');
+      btnList?.classList.remove('btn-list-active');
 
       const elementsCardImg = this.cardWrapper.querySelectorAll('.card-img');
       elementsCardImg.forEach((element) => {

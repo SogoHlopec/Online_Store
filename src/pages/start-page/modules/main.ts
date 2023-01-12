@@ -209,6 +209,7 @@ class Main {
 
     const objBtnCards = new CreateButton('Cards', 'btn-cards');
     objBtnCards.setClassSelector('button');
+    objBtnCards.setClassSelector('btn-cards-active');
     objSearchBtnContainer.appendElement(objBtnCards.getElement());
 
     const objCardsContainer = new CreateElem('div', 'cards-container');
