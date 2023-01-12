@@ -48,9 +48,8 @@ window.addEventListener('load', () => {
 });
 
 console.log(`
-При самопроверке выходит 97 баллов из 300.
+При нашей самопроверке вышло 139 баллов из 300.
 `);
-alert('Привет! Мы ещё работаем над проектом, пожалуйста, проверь 12 января =_=');
 
 export default locationResolver;
 export { startPage };
