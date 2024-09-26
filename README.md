@@ -1,5 +1,5 @@
 # Online_Store
-This is a team project (2 people) created during training at the RS SHOOL https://rs.school/index.html Stage 2 2022q3
+Simple e-commerce SPA. This is a team project (2 people) created during training at the RS SHOOL https://rs.school/index.html Stage 2 2022q3
 
 ## Task:
 * https://github.com/rolling-scopes-school/tasks/tree/master/tasks/online-store-team
@@ -22,3 +22,4 @@ This is a team project (2 people) created during training at the RS SHOOL https:
 * Data sorting
 * Data filtering
 * Routing
+* Cart
