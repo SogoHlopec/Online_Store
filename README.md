@@ -1,12 +1,6 @@
 # Online_Store
 Simple e-commerce SPA. This is a team project (2 people) created during training at the RS SHOOL https://rs.school/index.html Stage 2 2022q3
 
-## Task:
-* https://github.com/rolling-scopes-school/tasks/tree/master/tasks/online-store-team
-
-## Deploy:
-* https://sogohlopec.github.io/Online_Store/
-
 ## Stack:
 * HTML5
 * CSS3
@@ -23,3 +17,9 @@ Simple e-commerce SPA. This is a team project (2 people) created during training
 * Data filtering
 * Routing
 * Cart
+
+## Task:
+* https://github.com/rolling-scopes-school/tasks/tree/master/tasks/online-store-team
+
+## Deploy:
+* https://sogohlopec.github.io/Online_Store/
